@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            if(dashInternalTimer > 1)
+            if(dashInternalTimer > dashTime)
             {
                 float horizInput = Input.GetAxisRaw("Horizontal");
                 float vertInput = Input.GetAxisRaw("Vertical");
