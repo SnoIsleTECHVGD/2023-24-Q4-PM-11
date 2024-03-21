@@ -147,11 +147,10 @@ MonoBehaviour:
   walkSpeed: 3.4
   runSpeed: 5
   canMove: 1
-  dashSpeed: 2
-  dashReturnSpeed: 4
-  dashTime: 1
-  dashDistance: 1
-  dashVector: {x: 0, y: 0, z: 0}
+  dashSpeed: 100
+  dashReturnSpeed: 10
+  dashTime: 0.2
+  dashDistance: 10
 --- !u!1 &4598982462226050479
 GameObject:
   m_ObjectHideFlags: 0
