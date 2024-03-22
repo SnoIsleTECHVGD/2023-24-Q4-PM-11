@@ -121,10 +121,10 @@ MonoBehaviour:
       bufferFormat: 74
     dynamicResolutionSettings:
       enabled: 1
-      useMipBias: 0
-      enableDLSS: 0
-      DLSSPerfQualitySetting: 0
-      DLSSUseOptimalSettings: 0
+      useMipBias: 1
+      enableDLSS: 1
+      DLSSPerfQualitySetting: 2
+      DLSSUseOptimalSettings: 1
       DLSSSharpness: 0
       maxPercentage: 100
       minPercentage: 100
