@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed;
     public float runSpeed;
     public bool canMove = true;
-
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -27,6 +26,21 @@ public class PlayerMovement : MonoBehaviour
         {
             move = (transform.right * horizInput + transform.forward * vertInput).normalized;
         }
+
+        var rayDown = new Ray(transform.position, Vector3.down * 2);
+
+        RaycastHit hitDownInfo;
+        Physics.Raycast(rayDown, out hitDownInfo, 3);
+
+        if (hitDownInfo.normal.y < 1)
+        {
+            vertInput = hitDownInfo.normal.normalized.y;
+        }
+        else
+        {
+            vertInput = 0;
+        }
+
 
         if (characterController.isGrounded && ySpeed < 0)
         {

@@ -33,7 +33,7 @@ MonoBehaviour:
     m_Value: 1
   m_MaxRaySteps:
     m_OverrideState: 1
-    m_Value: 28
+    m_Value: 128
   m_DenoiseSS:
     m_OverrideState: 1
     m_Value: 1
@@ -65,7 +65,7 @@ MonoBehaviour:
     m_Value: 50
   m_ClampValue:
     m_OverrideState: 1
-    m_Value: 1.74
+    m_Value: 4
   mode:
     m_OverrideState: 0
     m_Value: 2
@@ -125,8 +125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   quality:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 3
   enabled:
     m_OverrideState: 1
     m_Value: 1
@@ -137,10 +137,10 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 2
   m_MinSmoothness:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.4
   m_SmoothnessFadeStart:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.5
   reflectSky:
     m_OverrideState: 0
@@ -178,26 +178,26 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   m_RayLength:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 50
   m_ClampValue:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   m_Denoise:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   m_DenoiserRadius:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 12
   m_AffectSmoothSurfaces:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   mode:
     m_OverrideState: 0
     m_Value: 2
   m_FullResolution:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   sampleCount:
     m_OverrideState: 0
     m_Value: 1
@@ -205,5 +205,5 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   m_RayMaxIterationsRT:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 48
