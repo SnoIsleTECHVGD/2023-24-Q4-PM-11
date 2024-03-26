@@ -8,8 +8,16 @@ public class SwordController : MonoBehaviour
 
     public Animator anim;
     private bool update = true;
+
+    [HideInInspector]
+    public bool isBlocking;
+    [HideInInspector]
+    public float blockTimer;
+    
     void Start()
     {
+        anim.Rebind();
+        anim.Update(Time.deltaTime);
     }
 
     // Update is called once per frame
@@ -23,6 +31,18 @@ public class SwordController : MonoBehaviour
             anim.SetFloat("y", vertInput, .2f, Time.deltaTime);
             anim.SetFloat("x", horizInput, .2f, Time.deltaTime);
 
+            if(Input.GetMouseButton(1))
+            {
+                isBlocking = true;
+                blockTimer += Time.deltaTime;
+            }
+            else
+            {
+                isBlocking = false;
+                blockTimer = 0;
+            }
+
+            anim.SetBool("block", isBlocking);
         }
     }
 }

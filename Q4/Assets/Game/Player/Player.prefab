@@ -235,11 +235,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swayStep: 0.01
-  swayMaxStepDistance: 0.01
-  rotationStep: 4
-  maxRotationStep: 5
-  smooth: 6
-  rotationSmooth: 8
+  swayMaxStepDistance: 0.02
+  rotationStep: 2
+  maxRotationStep: 3
+  smooth: 2
+  rotationSmooth: 5
 --- !u!1 &771980964568516128
 GameObject:
   m_ObjectHideFlags: 0

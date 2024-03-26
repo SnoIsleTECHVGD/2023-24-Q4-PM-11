@@ -344,7 +344,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: 89.98, y: 0, z: 0}
+        value: {x: 89.99, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -378,7 +378,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: {x: -89.98, y: 0, z: 0}
+        value: {x: -89.99, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -3718,7 +3718,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 89.98
+        value: 89.99
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -3829,7 +3829,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: -89.98
+        value: -89.99
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -3973,7 +3973,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Hand L
+    path: Hand R/shoulder.r/forearm.r/wrist/thumb.1.r
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3983,7 +3983,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Hand L
+    path: Hand R/shoulder.r/forearm.r/wrist/thumb.1.r
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -3993,7 +3993,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Hand L
+    path: Hand R/shoulder.r/forearm.r/wrist/thumb.1.r
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4093,7 +4093,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Hand R
+    path: Hand L
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4103,7 +4103,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Hand R
+    path: Hand L
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4113,7 +4113,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Hand R
+    path: Hand L
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4363,7 +4363,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Hand R/shoulder.r/forearm.r/wrist/thumb.1.r
+    path: Hand R
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4373,7 +4373,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Hand R/shoulder.r/forearm.r/wrist/thumb.1.r
+    path: Hand R
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4383,7 +4383,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Hand R/shoulder.r/forearm.r/wrist/thumb.1.r
+    path: Hand R
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
