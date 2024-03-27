@@ -13,14 +13,17 @@ public class SwordController : MonoBehaviour
     public bool isBlocking;
     [HideInInspector]
     public float blockTimer;
-    
+
+    public int currentComboIndex = 1;
+    public float comboTimer = 0;
+    public float swingTimer = 0;
     void Start()
     {
         anim.Rebind();
-        anim.Update(Time.deltaTime);
+        anim.Update(Time.deltaTime);    
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if(Sword && update)
@@ -41,6 +44,57 @@ public class SwordController : MonoBehaviour
                 isBlocking = false;
                 blockTimer = 0;
             }
+
+            if (Input.GetMouseButtonDown(0) && !isBlocking)
+            {
+                if(comboTimer > .8f)
+                {
+                    currentComboIndex = 1;
+                }
+
+                if(swingTimer < .26f)
+                {
+
+                }
+
+                if (currentComboIndex == 1 && swingTimer > .24f)
+                {
+                    anim.CrossFadeInFixedTime("SwordSlash1", .05f);
+                    currentComboIndex += 1;
+                    comboTimer = 0;
+                    swingTimer = 0;
+                    return;
+                }
+                else if (currentComboIndex == 2 && swingTimer > .24f)
+                {
+                    anim.CrossFadeInFixedTime("SwordSlash2", .05f);
+                    currentComboIndex += 1;
+                    comboTimer = 0;
+                    swingTimer = 0;
+                    return;
+                }
+                else if (currentComboIndex == 3 && swingTimer > .24f)
+                {
+                    anim.CrossFadeInFixedTime("SwordSlash3", .05f);
+                    currentComboIndex += 1;
+                    comboTimer = 0;
+                    swingTimer = 0;
+                    return;
+                }
+                else if (currentComboIndex == 4 && swingTimer > .2f)
+                {
+                    anim.CrossFadeInFixedTime("SwordSlash4", .09f);
+                    currentComboIndex = 1;
+                    comboTimer = 0;
+                    swingTimer = 0;
+                    return;
+                }
+            }
+
+            comboTimer += Time.deltaTime;
+            swingTimer += Time.deltaTime;
+
+
 
             anim.SetBool("block", isBlocking);
         }

@@ -3943,6 +3943,66 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
+    path: Hand R/shoulder.r/forearm.r/wrist/pinky.1.r
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Hand R/shoulder.r/forearm.r/wrist/pinky.1.r
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Hand R/shoulder.r/forearm.r/wrist/pinky.1.r
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Hand R/shoulder.r/forearm.r/wrist/pointer.1.r
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Hand R/shoulder.r/forearm.r/wrist/pointer.1.r
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Hand R/shoulder.r/forearm.r/wrist/pointer.1.r
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
     path: Hand R/shoulder.r/forearm.r/wrist/ring.1.r
     classID: 4
     script: {fileID: 0}
@@ -4003,7 +4063,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Hand L/shoulder.r/forearm.r
+    path: Hand L/shoulder.r/forearm.r/wrist
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4013,7 +4073,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Hand L/shoulder.r/forearm.r
+    path: Hand L/shoulder.r/forearm.r/wrist
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4023,7 +4083,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Hand L/shoulder.r/forearm.r
+    path: Hand L/shoulder.r/forearm.r/wrist
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4033,7 +4093,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Hand L/shoulder.r/forearm.r/wrist
+    path: Hand L/shoulder.r/forearm.r/wrist/pointer.1.r
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4043,7 +4103,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Hand L/shoulder.r/forearm.r/wrist
+    path: Hand L/shoulder.r/forearm.r/wrist/pointer.1.r
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4053,7 +4113,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Hand L/shoulder.r/forearm.r/wrist
+    path: Hand L/shoulder.r/forearm.r/wrist/pointer.1.r
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4273,7 +4333,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Hand R/shoulder.r/forearm.r/wrist/pinky.1.r
+    path: Hand L/shoulder.r/forearm.r
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4283,7 +4343,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Hand R/shoulder.r/forearm.r/wrist/pinky.1.r
+    path: Hand L/shoulder.r/forearm.r
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -4293,67 +4353,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Hand R/shoulder.r/forearm.r/wrist/pinky.1.r
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Hand R/shoulder.r/forearm.r/wrist/pointer.1.r
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Hand R/shoulder.r/forearm.r/wrist/pointer.1.r
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Hand R/shoulder.r/forearm.r/wrist/pointer.1.r
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Hand L/shoulder.r/forearm.r/wrist/pointer.1.r
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Hand L/shoulder.r/forearm.r/wrist/pointer.1.r
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Hand L/shoulder.r/forearm.r/wrist/pointer.1.r
+    path: Hand L/shoulder.r/forearm.r
     classID: 4
     script: {fileID: 0}
   - curve:
