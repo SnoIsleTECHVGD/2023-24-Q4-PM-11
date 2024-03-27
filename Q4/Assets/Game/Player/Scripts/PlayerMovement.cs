@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController characterController;
+    private SwordController sword;
+
     private float ySpeed;
 
     public float walkSpeed;
@@ -13,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        sword = GetComponent<SwordController>();
     }
     void Update()
     {
@@ -49,11 +52,15 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKey(KeyCode.LeftShift))
         {
+            sword.anim.SetFloat("speed", 1.7f);
             move *= runSpeed;
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 63, Time.deltaTime * 4);
         }
         else
         {
+            sword.anim.SetFloat("speed", 1);
             move *= walkSpeed;
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60, Time.deltaTime * 8);
         }
 
         move.y = ySpeed;
@@ -75,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 dashAbility(Vector3 currentMove)
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && !sword.isBlocking)
         {
             if(dashInternalTimer > dashTime)
             {
@@ -83,7 +90,29 @@ public class PlayerMovement : MonoBehaviour
                 float vertInput = Input.GetAxisRaw("Vertical");
 
                 dashVector = (transform.right * horizInput + transform.forward * vertInput).normalized * dashDistance;
-                dashInternalTimer = 0;
+                if (dashVector.magnitude > .1f)
+                {
+                    dashInternalTimer = 0;
+                    if(sword.swingTimer > .36f)
+                    {
+                        if (Input.GetKey(KeyCode.W))
+                        {
+                            sword.anim.CrossFade("DashForward", .1f);
+                        }
+                        else if (Input.GetKey(KeyCode.S))
+                        {
+                            sword.anim.CrossFade("DashBackward", .1f);
+                        }
+                        else if (Input.GetKey(KeyCode.A))
+                        {
+                            sword.anim.CrossFade("DashLeft", .1f);
+                        }
+                        else
+                        {
+                            sword.anim.CrossFade("DashRight", .1f);
+                        }
+                    }       
+                }
             }
         }
         else

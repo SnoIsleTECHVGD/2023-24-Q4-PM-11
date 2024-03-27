@@ -36,11 +36,18 @@ public class SwordController : MonoBehaviour
 
             if(Input.GetMouseButton(1))
             {
-                isBlocking = true;
-                blockTimer += Time.deltaTime;
+                anim.SetBool("block", true);
+
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("SwordBlock"))
+                {
+                    isBlocking = true;
+                    blockTimer += Time.deltaTime;
+                }
+              
             }
             else
             {
+                anim.SetBool("block", false);
                 isBlocking = false;
                 blockTimer = 0;
             }
@@ -96,7 +103,10 @@ public class SwordController : MonoBehaviour
 
 
 
-            anim.SetBool("block", isBlocking);
         }
     }
+
+   
+
+
 }
