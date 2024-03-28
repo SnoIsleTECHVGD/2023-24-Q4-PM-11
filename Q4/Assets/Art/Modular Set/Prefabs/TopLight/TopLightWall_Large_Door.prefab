@@ -11,9 +11,7 @@ GameObject:
   - component: {fileID: 1307232232281607148}
   - component: {fileID: 2375129923716951138}
   - component: {fileID: 6236413668449175014}
-  - component: {fileID: 8977320507373602801}
-  - component: {fileID: 7364987520466653855}
-  - component: {fileID: 8553161137934635873}
+  - component: {fileID: -8458702356257796820}
   m_Layer: 0
   m_Name: TopLightWall_Large_Door
   m_TagString: Untagged
@@ -87,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8977320507373602801
-BoxCollider:
+--- !u!64 &-8458702356257796820
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -97,32 +95,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.43870282, y: 1.214751, z: 1.2000003}
-  m_Center: {x: 0.38064906, y: -0.0073725167, z: -3.714921e-18}
---- !u!65 &7364987520466653855
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041491404192652875}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5168685, y: 1.9232612, z: 1.1906055}
-  m_Center: {x: -0.34156618, y: -0.36162814, z: 0.004696884}
---- !u!65 &8553161137934635873
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041491404192652875}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.9232612, z: 0.31193206}
-  m_Center: {x: 0, y: -0.36162812, z: 0.4440339}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3068918023606179276, guid: b8527a21ca76fc04987395f67e08375c, type: 3}
