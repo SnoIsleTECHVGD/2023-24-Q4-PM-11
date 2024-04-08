@@ -4,29 +4,35 @@ using UnityEngine;
 
 public class SwordController : MonoBehaviour
 {
-    public Transform Sword;
+    private PlayerMovement movement;
 
-    public Animator anim;
     private bool update = true;
 
     [HideInInspector]
     public bool isBlocking;
+
     [HideInInspector]
     public float blockTimer;
 
+    public Transform Sword;
+
+    public Animator anim;
+
     public int currentComboIndex = 1;
+
     public float comboTimer = 0;
     public float swingTimer = 0;
+
     void Start()
     {
         anim.Rebind();
-        anim.Update(Time.deltaTime);    
+        anim.Update(Time.deltaTime);
+        movement = GetComponent<PlayerMovement>();
     }
-
 
     void Update()
     {
-        if(Sword && update)
+        if (Sword && update)
         {
             float horizInput = Input.GetAxisRaw("Horizontal");
             float vertInput = Input.GetAxisRaw("Vertical");
@@ -34,16 +40,14 @@ public class SwordController : MonoBehaviour
             anim.SetFloat("y", vertInput, .2f, Time.deltaTime);
             anim.SetFloat("x", horizInput, .2f, Time.deltaTime);
 
-            if(Input.GetMouseButton(1))
+            if (Input.GetMouseButton(1))
             {
                 anim.SetBool("block", true);
-
                 if (anim.GetCurrentAnimatorStateInfo(0).IsName("SwordBlock"))
                 {
                     isBlocking = true;
                     blockTimer += Time.deltaTime;
                 }
-              
             }
             else
             {
@@ -54,14 +58,9 @@ public class SwordController : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && !isBlocking)
             {
-                if(comboTimer > .8f)
+                if (comboTimer > .8f)
                 {
                     currentComboIndex = 1;
-                }
-
-                if(swingTimer < .26f)
-                {
-
                 }
 
                 if (currentComboIndex == 1 && swingTimer > .24f)
@@ -97,16 +96,8 @@ public class SwordController : MonoBehaviour
                     return;
                 }
             }
-
             comboTimer += Time.deltaTime;
             swingTimer += Time.deltaTime;
-
-
-
         }
     }
-
-   
-
-
 }

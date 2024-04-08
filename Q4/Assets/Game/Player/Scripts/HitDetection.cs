@@ -5,6 +5,7 @@ using UnityEngine;
 public class HitDetection : MonoBehaviour
 {
     public List<int> currentHitIds = new List<int>();
+
     public bool isHitting = false;
 
     public void StartHit()

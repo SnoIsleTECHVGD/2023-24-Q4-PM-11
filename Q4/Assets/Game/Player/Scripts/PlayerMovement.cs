@@ -5,18 +5,31 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController characterController;
+
     private SwordController sword;
 
+    private Vector3 dashVector;
+    private Vector3 currentDash;
+
     private float ySpeed;
+    private float dashInternalTimer = 9999;
 
     public float walkSpeed;
     public float runSpeed;
+    public float dashSpeed;
+    public float dashReturnSpeed;
+    public float dashTime;
+    public float dashDistance;
+
     public bool canMove = true;
+    public bool isDashing = false;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         sword = GetComponent<SwordController>();
     }
+
     void Update()
     {
         Vector3 move = Vector3.zero;
@@ -31,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         var rayDown = new Ray(transform.position, Vector3.down * 2);
-
         RaycastHit hitDownInfo;
         Physics.Raycast(rayDown, out hitDownInfo, 3);
 
@@ -43,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
         {
             vertInput = 0;
         }
-
 
         if (characterController.isGrounded && ySpeed < 0)
         {
@@ -69,16 +80,6 @@ public class PlayerMovement : MonoBehaviour
 
         characterController.Move(move * Time.deltaTime);
     }
-
-    public float dashSpeed;
-    public float dashReturnSpeed;
-    public float dashTime;
-    public float dashDistance;
-
-    private Vector3 dashVector;
-    private Vector3 currentDash;
-
-    private float dashInternalTimer = 9999;
 
     Vector3 dashAbility(Vector3 currentMove)
     {
@@ -121,14 +122,15 @@ public class PlayerMovement : MonoBehaviour
 
             if (dashInternalTimer > dashTime)
             {
+                isDashing = false;
                 currentDash = Vector3.Lerp(currentDash, Vector3.zero, Time.deltaTime * dashReturnSpeed);
             }
             else
             {
+                isDashing = true;
                 currentDash = Vector3.MoveTowards(currentDash, dashVector, Time.deltaTime * dashSpeed);
             }
         }
-
         return currentMove + currentDash;
     }
 }

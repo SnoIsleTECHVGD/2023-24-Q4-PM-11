@@ -5,16 +5,19 @@ using UnityEngine.Rendering.HighDefinition.Attributes;
 
 public class ColorPanel : MonoBehaviour
 {
+    private Material mat;
+
     public List<color> colors = new List<color>();
+
     public float intensity;
 
-    private Material mat;
     void Start()
     {
         mat = new Material(GetComponent<MeshRenderer>().material);
         GetComponent<MeshRenderer>().materials = new Material[] { mat };
         StartCoroutine(loop());
     }
+
     IEnumerator loop()
     {
         for(; ; )
@@ -30,6 +33,7 @@ public class ColorPanel : MonoBehaviour
             }
         }
     }
+
     private void Update()
     {
         mat.SetFloat("_EmissiveIntensity", intensity);

@@ -18,5 +18,4 @@ public class RaytraceSetting : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
 }

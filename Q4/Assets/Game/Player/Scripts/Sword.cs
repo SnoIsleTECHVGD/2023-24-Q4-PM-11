@@ -4,23 +4,16 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
+    public HitDetection hit;  
 
-    public HitDetection hit;
-
-   
     private void OnTriggerStay(Collider collision)
     {
         if(hit.isHitting && collision.transform.GetComponent<Hitbox>())
         {
-            if(hit.currentHitIds.Contains(collision.transform.GetInstanceID()))
+            if(!hit.currentHitIds.Contains(collision.transform.GetInstanceID()))
             {
-
-            }
-            else
-            {
-                print(collision.transform.name);
                 hit.currentHitIds.Add(collision.transform.GetInstanceID());
-            }
+            }         
         }
     }
 }
