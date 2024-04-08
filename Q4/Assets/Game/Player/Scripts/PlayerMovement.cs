@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         {
             sword.anim.SetFloat("speed", 1.7f);
             move *= runSpeed;
-            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 63, Time.deltaTime * 4);
+            Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60.5f, Time.deltaTime * 4);
         }
         else
         {
