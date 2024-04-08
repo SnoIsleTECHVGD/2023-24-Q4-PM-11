@@ -9,7 +9,7 @@ public class RaytraceSetting : MonoBehaviour
     {
         string graphicsCardname = SystemInfo.graphicsDeviceName;
 
-        if(graphicsCardname.Contains("20") && graphicsCardname.Contains("NVIDIA") || graphicsCardname.Contains("30") && graphicsCardname.Contains("NVIDIA") || graphicsCardname.Contains("40") && graphicsCardname.Contains("NVIDIA") || graphicsCardname.Contains("50") && graphicsCardname.Contains("NVIDIA") || graphicsCardname.Contains("60") && graphicsCardname.Contains("NVIDIA"))
+        if(graphicsCardname.Contains("RTX"))
         {
             Camera.main.GetComponent<HDAdditionalCameraData>().allowDynamicResolution = true;
         }
