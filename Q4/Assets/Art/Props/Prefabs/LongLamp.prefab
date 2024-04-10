@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7961547681151236973}
   - component: {fileID: 8962556403279204489}
   - component: {fileID: 3271394846265921959}
+  - component: {fileID: 6063211598404390466}
   m_Layer: 0
   m_Name: Lamp Base
   m_TagString: Untagged
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6063211598404390466
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725096177407885}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.66308457, y: 0.34156984, z: 0.6050335}
+  m_Center: {x: 0.3215423, y: -0.000000009262621, z: 0.043060914}
 --- !u!1 &315650857132176652
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,5 +429,5 @@ Transform:
   - {fileID: 7961547681151236973}
   - {fileID: 2347426056420475964}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
