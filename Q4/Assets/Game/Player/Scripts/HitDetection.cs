@@ -8,6 +8,8 @@ public class HitDetection : MonoBehaviour
 
     public bool isHitting = false;
 
+    public GameObject swordTrail;
+
     public void StartHit()
     {
         isHitting = true;
@@ -17,5 +19,10 @@ public class HitDetection : MonoBehaviour
     {
         isHitting = false;
         currentHitIds.Clear();
+    }
+
+    public void setSwordTrail(int active)
+    {
+        swordTrail.SetActive(active == 1);
     }
 }
