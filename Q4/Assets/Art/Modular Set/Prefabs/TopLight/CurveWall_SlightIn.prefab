@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 313298438247576398}
   - component: {fileID: 990918594912279721}
   - component: {fileID: 6703593976705315526}
+  - component: {fileID: 6621420170950593033}
   m_Layer: 0
   m_Name: CurveWall_SlightIn
   m_TagString: Untagged
@@ -84,3 +85,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6621420170950593033
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4817819076064413331}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1064976139262196065, guid: b8527a21ca76fc04987395f67e08375c, type: 3}

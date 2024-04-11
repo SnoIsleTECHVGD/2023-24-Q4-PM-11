@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8550589036842723938}
   - component: {fileID: 3545926780672790865}
   - component: {fileID: 7139195332747722083}
+  - component: {fileID: -1564054442226324981}
   m_Layer: 0
   m_Name: CurveWall_Out
   m_TagString: Untagged
@@ -84,3 +85,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-1564054442226324981
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051982123022424997}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5488044541780133963, guid: b8527a21ca76fc04987395f67e08375c, type: 3}
