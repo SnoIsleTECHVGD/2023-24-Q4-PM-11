@@ -34,6 +34,7 @@ public class SwordController : MonoBehaviour
     {
         if (Sword && update)
         {
+            anim.SetBool("hasSword", true);
             float horizInput = Input.GetAxisRaw("Horizontal");
             float vertInput = Input.GetAxisRaw("Vertical");
 
