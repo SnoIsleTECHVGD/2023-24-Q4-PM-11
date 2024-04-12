@@ -21,6 +21,11 @@ public class CameraMovement : MonoBehaviour
     public float smoothing = 1.3f;
 
 
+    public void resetCamera()
+    {
+        currentMouseLook = Vector2.zero;
+        appliedMouseDelta = Vector2.zero;
+    }
 
     void Start()
     {

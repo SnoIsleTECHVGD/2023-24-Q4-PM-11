@@ -100,5 +100,79 @@ public class SwordController : MonoBehaviour
             comboTimer += Time.deltaTime;
             swingTimer += Time.deltaTime;
         }
+        else
+        {
+            if(Input.GetKeyDown(KeyCode.F))
+            {
+                RaycastHit hit;
+                if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 3))
+                {
+                    if(hit.transform.name == "Sword")
+                    {
+                      StartCoroutine(pickupAnimation(hit.transform));
+                    }
+                }
+            }
+        }
+    }
+
+    Transform swordObject;
+    public Transform wrist;
+    IEnumerator pickupAnimation(Transform sword)
+    {
+        swordObject = sword;
+        movement.canMove = false;
+        Camera.main.transform.parent.GetComponent<CameraMovement>().isActive = false;
+        transform.parent = sword.parent;
+        float timeForMovingToPos = .8f;
+
+        float timer = 0;
+        for(;;)
+        {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(25.85149f, .979999f, -29.4553f), Time.deltaTime * 7);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(new Vector3(0, -269.765f, 0)), Time.deltaTime * 7);
+            if (timer > timeForMovingToPos)
+            {
+                transform.position = new Vector3(25.85149f, .979999f, -29.4553f);
+                transform.rotation = Quaternion.Euler(new Vector3(0, -269.765f, 0));
+                break;
+            }
+            timer += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        transform.parent.GetComponent<Animator>().Rebind();
+
+        transform.parent.GetComponent<Animator>().enabled = true;
+        anim.enabled = false;
+        yield return new WaitForSeconds(4.917f);
+
+        FindObjectOfType<AnimationUtil>().GetComponent<Animator>().enabled = false;
+
+        SetSwordParent();
+        Sword = swordObject;
+
+       
+
+        movement.canMove = true;
+        Camera.main.transform.parent.eulerAngles = new Vector3(0, 0, 0);
+        Camera.main.transform.parent.GetComponent<CameraMovement>().resetCamera();
+        Camera.main.transform.parent.GetComponent<CameraMovement>().isActive = true;
+        transform.parent = null;
+
+         yield return new WaitForEndOfFrame();
+        anim.enabled = true;
+        anim.Rebind();
+
+    }
+
+    public void SetSwordParent()
+    {
+        swordObject.parent = wrist;
+    }
+
+    public void SetSwordParentDefault()
+    {
+        swordObject.parent = transform.parent;
     }
 }
