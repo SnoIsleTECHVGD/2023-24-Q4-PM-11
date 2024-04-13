@@ -11,11 +11,10 @@ public class CameraMovement : MonoBehaviour
     private Vector2 currentMouseLook;
     private Vector2 appliedMouseDelta;
 
-    private float zRotation;
-    private float xPosition;
-
     [SerializeField]
     public bool isActive = true;
+
+    private bool cursorShown;
 
     public float sensitivity = 1f;
     public float smoothing = 1.3f;
@@ -25,6 +24,7 @@ public class CameraMovement : MonoBehaviour
     {
         currentMouseLook = Vector2.zero;
         appliedMouseDelta = Vector2.zero;
+        start = Quaternion.Euler(new Vector3(0, -269.765f, 0));
     }
 
     void Start()
@@ -39,8 +39,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (isActive)
         {
-            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-            UnityEngine.Cursor.visible = false;
+         
 
             Vector2 b = Vector2.Scale(new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")), Vector2.one * this.sensitivity * this.smoothing);
             this.appliedMouseDelta = Vector2.Lerp(this.appliedMouseDelta, b, 1f / this.smoothing);
@@ -50,10 +49,26 @@ public class CameraMovement : MonoBehaviour
             base.transform.localRotation = Quaternion.AngleAxis(-this.currentMouseLook.y, Vector3.right);
             Player.localRotation = Quaternion.AngleAxis(currentMouseLook.x, Vector3.up) * start;
         }
+
         else
         {
-            UnityEngine.Cursor.lockState = CursorLockMode.None;
-            UnityEngine.Cursor.visible = true;
+            if (cursorShown)
+            {
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
+                UnityEngine.Cursor.visible = true;
+            }
+            else
+            {
+                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+                UnityEngine.Cursor.visible = false;
+            }
         }
+    
+        
+    }
+
+    public void setActive(bool active, bool cursor)
+    {
+        this.isActive = active;
     }
 }
