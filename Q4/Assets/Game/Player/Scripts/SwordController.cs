@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwordController : MonoBehaviour
@@ -134,10 +135,13 @@ public class SwordController : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, new Vector3(25.85149f, .979999f, -29.4553f), Time.deltaTime * 10);
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, -269.765f, 0)), Time.deltaTime * 15);
+            Camera.main.transform.parent.rotation = Quaternion.Lerp(Camera.main.transform.parent.rotation, Quaternion.Euler(new Vector3(17.482f, 90, 0)), Time.deltaTime * 15);
+
             if (timer > timeForMovingToPos)
             {
                 transform.position = new Vector3(25.85149f, .979999f, -29.4553f);
                 transform.rotation = Quaternion.Euler(new Vector3(0, -269.765f, 0));
+                Camera.main.transform.parent.rotation = Quaternion.Euler(new Vector3(17.482f, 90, 0));
                 break;
             }
             timer += Time.deltaTime;
@@ -158,7 +162,8 @@ public class SwordController : MonoBehaviour
 
             SetSwordParent();
             Sword = swordObject;
-
+            anim.transform.GetComponent<HitDetection>().swordTrail = sword.GetChild(2).gameObject;
+            sword.GetComponent<Sword>().hit = anim.transform.GetComponent<HitDetection>();
 
 
             movement.canMove = true;
