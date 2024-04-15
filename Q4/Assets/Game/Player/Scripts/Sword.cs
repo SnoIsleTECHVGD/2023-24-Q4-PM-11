@@ -8,12 +8,16 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerStay(Collider collision)
     {
-        if(hit.isHitting && collision.transform.GetComponent<Hitbox>())
+        if(hit)
         {
-            if(!hit.currentHitIds.Contains(collision.transform.GetInstanceID()))
+            if (hit.isHitting && collision.transform.GetComponent<Hitbox>())
             {
-                hit.currentHitIds.Add(collision.transform.GetInstanceID());
-            }         
+                if (!hit.currentHitIds.Contains(collision.transform.GetInstanceID()))
+                {
+                    hit.currentHitIds.Add(collision.transform.GetInstanceID());
+                }
+            }
         }
+      
     }
 }

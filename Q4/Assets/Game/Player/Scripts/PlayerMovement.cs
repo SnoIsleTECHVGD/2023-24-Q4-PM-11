@@ -61,7 +61,8 @@ public class PlayerMovement : MonoBehaviour
             ySpeed = 0f;
         }
 
-        if(Input.GetKey(KeyCode.LeftShift))
+
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             sword.anim.SetFloat("speed", 1.7f);
             move *= runSpeed;
@@ -78,14 +79,27 @@ public class PlayerMovement : MonoBehaviour
         move = new Vector3(move.x, move.y + -vertInput, move.z);
         move = dashAbility(move);
 
-        characterController.Move(move * Time.deltaTime);
+        if(characterController.enabled)
+        {
+            characterController.Move(move * Time.deltaTime);
+        }
+
+        if (transform.parent)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                transform.parent.GetComponent<Animator>().CrossFadeInFixedTime("Up", .05f);
+                characterController.enabled = false;
+               StartCoroutine( enableCC(8.3f));
+            }
+        }
     }
 
     Vector3 dashAbility(Vector3 currentMove)
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !sword.isBlocking)
+        if (Input.GetKeyDown(KeyCode.Space) && !sword.isBlocking)
         {
-            if(dashInternalTimer > dashTime)
+            if (dashInternalTimer > dashTime)
             {
                 float horizInput = Input.GetAxisRaw("Horizontal");
                 float vertInput = Input.GetAxisRaw("Vertical");
@@ -94,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
                 if (dashVector.magnitude > .1f)
                 {
                     dashInternalTimer = 0;
-                    if(sword.swingTimer > .36f)
+                    if (sword.swingTimer > .36f)
                     {
                         if (Input.GetKey(KeyCode.W))
                         {
@@ -112,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
                         {
                             sword.anim.CrossFade("DashRight", .1f);
                         }
-                    }       
+                    }
                 }
             }
         }
@@ -132,5 +146,33 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         return currentMove + currentDash;
+    }
+
+
+    Vector3 lastPlatformPos;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Elevator")
+        {
+            transform.parent = other.transform;
+            lastPlatformPos = other.transform.position;
+
+
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Elevator")
+        {
+            transform.parent = null;
+        }
+    }
+
+    IEnumerator enableCC(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        characterController.enabled = true;
     }
 }
