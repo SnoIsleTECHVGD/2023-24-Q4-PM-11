@@ -18,7 +18,7 @@ public class MenuUI : MonoBehaviour
     }
     public void Level()
     {
-        
+        SceneManager.LoadScene("Game");
     }
 
     public void Credits()
@@ -37,5 +37,12 @@ public class MenuUI : MonoBehaviour
     {
         StartMenu.SetActive(false);
         SettingsMenu.SetActive(true);
+    }
+
+    public void Main()
+    {
+        StartMenu.SetActive(true);
+        CreditMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
     }
 }
