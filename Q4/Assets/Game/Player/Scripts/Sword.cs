@@ -28,7 +28,7 @@ public class Sword : MonoBehaviour
 
                         foreach(Rigidbody rigidbody in allRigids) 
                         {
-                            rigidbody.AddForce(transform.forward * 28, ForceMode.Impulse);
+                            rigidbody.AddForce(transform.root.GetComponent<SwordController>().Sword.forward * 28, ForceMode.Impulse);
                         }
                     }
                 }
