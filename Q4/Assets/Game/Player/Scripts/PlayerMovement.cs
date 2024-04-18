@@ -77,7 +77,11 @@ public class PlayerMovement : MonoBehaviour
 
         move.y = ySpeed;
         move = new Vector3(move.x, move.y + -vertInput, move.z);
-        move = dashAbility(move);
+
+        if(sword.Sword)
+        {
+            move = dashAbility(move);
+        }
 
         if (characterController.enabled)
         {

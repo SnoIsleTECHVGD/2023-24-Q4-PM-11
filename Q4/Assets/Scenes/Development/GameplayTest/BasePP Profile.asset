@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.861505}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.23897067}
   midtones:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: 0.3598691}
@@ -582,7 +582,7 @@ MonoBehaviour:
     m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   tint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0.25882354, g: 0.10980392, b: 0.27450982, a: 1}
   maxFogDistance:
     m_OverrideState: 0
     m_Value: 5000

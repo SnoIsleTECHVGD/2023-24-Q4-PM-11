@@ -43996,19 +43996,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6629549866653146179, guid: b0340e605098287438e9128ddc702b43, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.5294275
+      value: 0.5921287
       objectReference: {fileID: 0}
     - target: {fileID: 6629549866653146179, guid: b0340e605098287438e9128ddc702b43, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5294275
+      value: 0.5921287
       objectReference: {fileID: 0}
     - target: {fileID: 6629549866653146179, guid: b0340e605098287438e9128ddc702b43, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.4687286
+      value: 0.38650176
       objectReference: {fileID: 0}
     - target: {fileID: 6629549866653146179, guid: b0340e605098287438e9128ddc702b43, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.4687286
+      value: -0.38650176
       objectReference: {fileID: 0}
     - target: {fileID: 9189744072945402092, guid: b0340e605098287438e9128ddc702b43, type: 3}
       propertyPath: m_NavMeshLayer
@@ -79998,19 +79998,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6629549866653146179, guid: b0340e605098287438e9128ddc702b43, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6663775
+      value: 0.40448445
       objectReference: {fileID: 0}
     - target: {fileID: 6629549866653146179, guid: b0340e605098287438e9128ddc702b43, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.6663775
+      value: 0.40448445
       objectReference: {fileID: 0}
     - target: {fileID: 6629549866653146179, guid: b0340e605098287438e9128ddc702b43, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.23651871
+      value: 0.57999337
       objectReference: {fileID: 0}
     - target: {fileID: 6629549866653146179, guid: b0340e605098287438e9128ddc702b43, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.23651871
+      value: -0.57999337
       objectReference: {fileID: 0}
     - target: {fileID: 9189744072945402092, guid: b0340e605098287438e9128ddc702b43, type: 3}
       propertyPath: m_NavMeshLayer
