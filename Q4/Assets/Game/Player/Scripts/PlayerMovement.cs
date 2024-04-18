@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         move = new Vector3(move.x, move.y + -vertInput, move.z);
         move = dashAbility(move);
 
-        if(characterController.enabled)
+        if (characterController.enabled)
         {
             characterController.Move(move * Time.deltaTime);
         }
@@ -88,9 +88,12 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                transform.parent.GetComponent<Animator>().CrossFadeInFixedTime("Up", .05f);
-                characterController.enabled = false;
-               StartCoroutine( enableCC(8.3f));
+                if (!transform.parent.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Up"))
+                {
+                    transform.parent.GetComponent<Animator>().CrossFadeInFixedTime("Up", .05f);
+                    characterController.enabled = false;
+                    StartCoroutine(enableCC(8.3f));
+                }
             }
         }
     }
