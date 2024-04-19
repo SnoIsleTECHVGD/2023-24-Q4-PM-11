@@ -128,19 +128,19 @@ public class SwordController : MonoBehaviour
         Camera.main.transform.parent.GetComponent<CameraMovement>().setActive(false, false);
         Camera.main.transform.parent.GetChild(0).GetComponent<Sway>().enabled = false;
         transform.parent = sword.parent;
-        float timeForMovingToPos = 1;
+        float timeForMovingToPos = .6f;
 
         float timer = 0;
         for(;;)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(25.85149f, .979999f, -29.4553f), Time.deltaTime * 10);
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(new Vector3(0, -269.765f, 0)), Time.deltaTime * 15);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(1.709999f, -0.9994947f, -0.8106022f), Time.deltaTime * 10);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(new Vector3(0, -269.765f, 0)), Time.deltaTime * 15);
             Camera.main.transform.parent.rotation = Quaternion.Lerp(Camera.main.transform.parent.rotation, Quaternion.Euler(new Vector3(17.482f, 90, 0)), Time.deltaTime * 15);
 
             if (timer > timeForMovingToPos)
             {
-                transform.position = new Vector3(25.85149f, .979999f, -29.4553f);
-                transform.rotation = Quaternion.Euler(new Vector3(0, -269.765f, 0));
+                transform.localPosition = new Vector3(1.709999f, -0.9994947f, -0.8106022f);
+                transform.localRotation = Quaternion.Euler(new Vector3(0, -269.765f, 0));
                 Camera.main.transform.parent.rotation = Quaternion.Euler(new Vector3(17.482f, 90, 0));
                 break;
             }
