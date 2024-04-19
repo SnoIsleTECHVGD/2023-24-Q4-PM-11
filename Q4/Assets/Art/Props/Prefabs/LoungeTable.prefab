@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3142891533302095296}
   - component: {fileID: 2550483401065905202}
   - component: {fileID: 7546276178312162502}
+  - component: {fileID: 5240954564662842728}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5240954564662842728
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457514614844947622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6692290496178104961, guid: e98859f375312dc42a4f4013e6b76122, type: 3}
 --- !u!1 &6645444516627127007
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +129,7 @@ Transform:
   - {fileID: 718872660285717132}
   - {fileID: 3142891533302095296}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6729643609793883355
 GameObject:
@@ -127,6 +142,7 @@ GameObject:
   - component: {fileID: 718872660285717132}
   - component: {fileID: 664063435452169552}
   - component: {fileID: 3490143299002794215}
+  - component: {fileID: 222814242001058665}
   m_Layer: 0
   m_Name: Legs.001
   m_TagString: Untagged
@@ -199,3 +215,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &222814242001058665
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729643609793883355}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8930426555695561382, guid: e98859f375312dc42a4f4013e6b76122, type: 3}
