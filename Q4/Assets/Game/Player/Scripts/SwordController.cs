@@ -148,12 +148,11 @@ public class SwordController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-
         transform.parent.GetComponent<Animator>().Rebind();
-
         transform.parent.GetComponent<Animator>().enabled = true;
 
         anim.enabled = false;
+
         if (!debugAnimation)
         {
             yield return new WaitForSeconds(7.2f);
@@ -165,10 +164,10 @@ public class SwordController : MonoBehaviour
             anim.transform.GetComponent<HitDetection>().swordTrail = sword.GetChild(2).gameObject;
             sword.GetComponent<Sword>().hit = anim.transform.GetComponent<HitDetection>();
 
-
             movement.canMove = true;
             Camera.main.transform.parent.GetComponent<CameraMovement>().resetCamera();
             Camera.main.transform.parent.eulerAngles = new Vector3(0, 0, 0);
+
             yield return new WaitForEndOfFrame();
 
             Camera.main.transform.parent.GetComponent<CameraMovement>().setActive(true, false);
@@ -179,9 +178,7 @@ public class SwordController : MonoBehaviour
             yield return new WaitForEndOfFrame();
             anim.enabled = true;
             anim.Rebind();
-        }
-         
-
+        }        
     }
 
     public void SetSwordParent()

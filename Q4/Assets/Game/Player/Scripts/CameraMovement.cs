@@ -38,9 +38,7 @@ public class CameraMovement : MonoBehaviour
     void Update()
     {
         if (isActive)
-        {
-         
-
+        {        
             Vector2 b = Vector2.Scale(new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y")), Vector2.one * this.sensitivity * this.smoothing);
             this.appliedMouseDelta = Vector2.Lerp(this.appliedMouseDelta, b, 1f / this.smoothing);
             this.currentMouseLook += this.appliedMouseDelta;
@@ -62,9 +60,7 @@ public class CameraMovement : MonoBehaviour
                 UnityEngine.Cursor.lockState = CursorLockMode.Locked;
                 UnityEngine.Cursor.visible = false;
             }
-        }
-    
-        
+        }       
     }
 
     public void setActive(bool active, bool cursor)
