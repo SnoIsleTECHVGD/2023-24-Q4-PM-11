@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4464265795632638944}
   - component: {fileID: 1293574066166229108}
   - component: {fileID: 2456829436499147931}
+  - component: {fileID: 9150369103321561491}
   m_Layer: 0
   m_Name: BlankWall_Large_SideDoor1
   m_TagString: Untagged
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9150369103321561491
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389999964725680887}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4118025292446492972, guid: 660a97272aa62154abbc821981229cc0, type: 3}
