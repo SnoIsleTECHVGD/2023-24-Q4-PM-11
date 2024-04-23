@@ -5,6 +5,8 @@ using UnityEngine.Rendering.HighDefinition;
 
 public class RaytraceSetting : MonoBehaviour
 {
+    public GameObject nonRtVolume;
+
     void Start()
     {
         string graphicsCardname = SystemInfo.graphicsDeviceName;
@@ -15,6 +17,7 @@ public class RaytraceSetting : MonoBehaviour
         }
         else
         {
+            nonRtVolume.SetActive(true);
             gameObject.SetActive(false);
         }
     }

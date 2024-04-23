@@ -8,6 +8,8 @@ public class SoldierAI : MonoBehaviour
     private NavMeshAgent agent;
     private Animator anim;
 
+    private Transform player;
+
     private Vector3 startPos;
 
     private bool update = true;
@@ -17,12 +19,11 @@ public class SoldierAI : MonoBehaviour
     public State currentState = State.Idle;
 
     public Transform guardRagdoll;
-
     public Transform head;
+    public Transform hitEffectPosition;
 
     public Material badBoyMat;
 
-    private Transform player;
 
     Vector2 velocity = Vector2.zero;
     Vector2 smoothDeltaPosition = Vector2.zero;
@@ -38,7 +39,7 @@ public class SoldierAI : MonoBehaviour
 
     void Update()
     {
-        Vector3 worldDeltaPosition = agent.pathEndPosition - transform.position;
+        Vector3 worldDeltaPosition = (agent.steeringTarget + transform.forward) - transform.position;
         float dx = Vector3.Dot(transform.right, worldDeltaPosition);
         float dy = Vector3.Dot(transform.forward, worldDeltaPosition);
         Vector2 deltaPosition = new Vector2(dx, dy);
@@ -46,7 +47,8 @@ public class SoldierAI : MonoBehaviour
         float smooth = Mathf.Min(1.0f, Time.deltaTime / 0.15f);
         smoothDeltaPosition = Vector2.Lerp(smoothDeltaPosition, deltaPosition, smooth);
 
-        velocity = smoothDeltaPosition / Time.deltaTime;
+        if (Time.deltaTime > 1e-5f)
+            velocity = smoothDeltaPosition / Time.deltaTime;
 
 
         if (update)
@@ -118,8 +120,8 @@ public class SoldierAI : MonoBehaviour
 
             for (; ; )
             {
-                anim.SetFloat("x", velocity.x, .2f, Time.deltaTime);
-                anim.SetFloat("y", velocity.y, .2f, Time.deltaTime);
+                anim.SetFloat("x", velocity.x, 1, Time.deltaTime);
+                anim.SetFloat("y", velocity.y, 1, Time.deltaTime);
 
                 var lookPos = player.position - transform.position;
                 lookPos.y = 0;
@@ -136,8 +138,7 @@ public class SoldierAI : MonoBehaviour
         }
         else
         {
-            anim.SetFloat("x", velocity.x, .2f, Time.deltaTime);
-            anim.SetFloat("y", velocity.y, .2f, Time.deltaTime);
+           
 
             if (Random.value > .5f)
             {
@@ -150,6 +151,8 @@ public class SoldierAI : MonoBehaviour
 
             for (; ; )
             {
+                anim.SetFloat("x", velocity.x, 1, Time.deltaTime);
+                anim.SetFloat("y", velocity.y, 1, Time.deltaTime);
 
                 var lookPos = player.position - transform.position;
                 lookPos.y = 0;
@@ -194,6 +197,7 @@ public class SoldierAI : MonoBehaviour
                 rigidbody.AddForce(forward * 26, ForceMode.Impulse);
             }
 
+            Destroy(rag.gameObject, 15);
             Destroy(gameObject);
         }
     }
