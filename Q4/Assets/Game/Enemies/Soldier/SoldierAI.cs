@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -28,6 +29,8 @@ public class SoldierAI : MonoBehaviour
     Vector2 velocity = Vector2.zero;
     Vector2 smoothDeltaPosition = Vector2.zero;
 
+    private float fireClock;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -35,6 +38,8 @@ public class SoldierAI : MonoBehaviour
         startPos = transform.position;
 
         agent.updateRotation = false;
+
+        fireClock = Random.Range(1.1f, 1.8f);
     }
 
     void Update()
@@ -118,7 +123,7 @@ public class SoldierAI : MonoBehaviour
                 agent.SetDestination(transform.position + (-transform.forward * Random.Range(.5f, 2f) + (-transform.right * Random.Range(.5f, 2f))));
             }
 
-            for (; ; )
+            for (;;)
             {
                 anim.SetFloat("x", velocity.x, 1, Time.deltaTime);
                 anim.SetFloat("y", velocity.y, 1, Time.deltaTime);
@@ -127,12 +132,15 @@ public class SoldierAI : MonoBehaviour
                 lookPos.y = 0;
                 var rotation = Quaternion.LookRotation(lookPos);
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 4.5f);
-
+                fireLoop();
                 if (pathComplete())
                 {
                     update = true;
                     break;
                 }
+
+
+
                 yield return new WaitForEndOfFrame();
             }
         }
@@ -153,7 +161,7 @@ public class SoldierAI : MonoBehaviour
             {
                 anim.SetFloat("x", velocity.x, 1, Time.deltaTime);
                 anim.SetFloat("y", velocity.y, 1, Time.deltaTime);
-
+                fireLoop();
                 var lookPos = player.position - transform.position;
                 lookPos.y = 0;
                 var rotation = Quaternion.LookRotation(lookPos);
@@ -170,8 +178,31 @@ public class SoldierAI : MonoBehaviour
     }
 
 
+    public Transform projectile;
+    public Transform barrel;
 
+    float fireTimer = 0;
+    void fireLoop()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(head.position, player.transform.position - head.position, out hit, 20))
+        {
+            if (hit.transform.name == "Player")
+            {
+                fireTimer += Time.deltaTime;
 
+                if(fireTimer > fireClock)
+                {
+                    Vector3 randomPos = Random.insideUnitSphere * Random.Range(1, 2);
+                    randomPos.y = 0;
+                    Transform spawnedProjectile = Instantiate(projectile, barrel.position, Quaternion.identity);
+                    spawnedProjectile.forward = player.transform.position + (new Vector3(0, .75f, 0) + randomPos) - head.position;
+                    spawnedProjectile.GetComponent<Rigidbody>().AddForce(spawnedProjectile.forward * 25, ForceMode.Impulse);
+                    fireTimer = 0;
+                }
+            }
+        }
+    }
     public enum State
     {
         Idle,

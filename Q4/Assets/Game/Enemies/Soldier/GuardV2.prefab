@@ -446,6 +446,7 @@ Transform:
   - {fileID: 3758652282954113563}
   - {fileID: 6111009423522766367}
   - {fileID: 6940206497454466465}
+  - {fileID: 1786632870750180423}
   m_Father: {fileID: 4650495514256512782}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -862,6 +863,8 @@ MonoBehaviour:
   head: {fileID: 1461916935236258991}
   hitEffectPosition: {fileID: 5047718330873075284}
   badBoyMat: {fileID: 2100000, guid: f9d3aba98b6e8564cab382d4f4d80b9f, type: 2}
+  projectile: {fileID: 3223820479072535704, guid: 1ebe8b8fb20df144ca5fac82d78f7bc4, type: 3}
+  barrel: {fileID: 1786632870750180423}
 --- !u!1 &3168390385679509142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,6 +1598,37 @@ Transform:
   m_Children:
   - {fileID: 4605790055326766655}
   m_Father: {fileID: 8438368713549117170}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6767623996666840311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1786632870750180423}
+  m_Layer: 0
+  m_Name: Barrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1786632870750180423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767623996666840311}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.17, y: 1.82, z: 0.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8962943614842715188}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6777164381537387736
