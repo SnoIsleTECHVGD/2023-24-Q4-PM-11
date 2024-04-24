@@ -131,7 +131,7 @@ public class SoldierAI : MonoBehaviour
                 var lookPos = player.position - transform.position;
                 lookPos.y = 0;
                 var rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 4.5f);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 7);
                 fireLoop();
                 if (pathComplete())
                 {
@@ -165,7 +165,7 @@ public class SoldierAI : MonoBehaviour
                 var lookPos = player.position - transform.position;
                 lookPos.y = 0;
                 var rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 4.5f);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 7);
 
                 if (pathComplete())
                 {
@@ -196,7 +196,7 @@ public class SoldierAI : MonoBehaviour
                     Vector3 randomPos = Random.insideUnitSphere * Random.Range(1, 2);
                     randomPos.y = 0;
                     Transform spawnedProjectile = Instantiate(projectile, barrel.position, Quaternion.identity);
-                    spawnedProjectile.forward = player.transform.position + (new Vector3(0, .75f, 0) + randomPos) - head.position;
+                    spawnedProjectile.forward = player.transform.position + (new Vector3(0, .9f, 0) + randomPos) - head.position;
                     spawnedProjectile.GetComponent<Rigidbody>().AddForce(spawnedProjectile.forward * 25, ForceMode.Impulse);
                     fireTimer = 0;
                 }
