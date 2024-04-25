@@ -27,7 +27,6 @@ public class Sword : MonoBehaviour
                     RaycastHit hit;
                     if(Physics.Raycast(Camera.main.transform.position, collision.transform.GetComponent<SoldierAI>().hitEffectPosition.position - Camera.main.transform.position, out hit, 5, ~ignore))
                     {
-                        print(hit.transform.name);
                         if (hit.transform == collision.transform)
                         {
                             var instaniatedEffect = Instantiate(hitEffect, collision.transform);

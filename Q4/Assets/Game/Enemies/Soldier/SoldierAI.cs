@@ -185,7 +185,7 @@ public class SoldierAI : MonoBehaviour
     void fireLoop()
     {
         RaycastHit hit;
-        if (Physics.Raycast(head.position, player.transform.position - head.position, out hit, 20))
+        if (Physics.Raycast(head.position, Camera.main.transform.position - head.position, out hit, 20))
         {
             if (hit.transform.name == "Player")
             {
@@ -199,6 +199,7 @@ public class SoldierAI : MonoBehaviour
                     spawnedProjectile.forward = player.transform.position + (new Vector3(0, .9f, 0) + randomPos) - head.position;
                     spawnedProjectile.GetComponent<Rigidbody>().AddForce(spawnedProjectile.forward * 25, ForceMode.Impulse);
                     fireTimer = 0;
+                    anim.CrossFadeInFixedTime("Fire", .05f);
                 }
             }
         }
@@ -250,7 +251,7 @@ public class SoldierAI : MonoBehaviour
         if (player)
         {
             RaycastHit hit;
-            if (Physics.Raycast(head.position, player.transform.position - head.position, out hit, range))
+            if (Physics.Raycast(head.position, Camera.main.transform.position - head.position, out hit, range))
             {
                 if (hit.transform.name == "Player")
                 {
