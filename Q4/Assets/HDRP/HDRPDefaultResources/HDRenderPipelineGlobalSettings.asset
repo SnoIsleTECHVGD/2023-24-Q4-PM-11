@@ -110,6 +110,10 @@ MonoBehaviour:
       hasProbeVolumes: 0
     - sceneGUID: 1708fb413fd8d4a4b87fe1fe223ecfee
       hasProbeVolumes: 0
+    - sceneGUID: 16c5d2c46b06338478c3cc783a6ab159
+      hasProbeVolumes: 0
+    - sceneGUID: c8778e0a0814fa34e988db846b0a0c81
+      hasProbeVolumes: 0
     serializedProfiles:
     - sceneGUID: 9ceb12cd155edd24489426733e7efdb2
       profile: {fileID: 11400000, guid: 47fcd59027cbcf544846af21457f8d08, type: 2}
@@ -120,6 +124,10 @@ MonoBehaviour:
     - sceneGUID: 6c6648f67fd77b84fab075e4bf0507be
       profile: {fileID: 11400000, guid: 47fcd59027cbcf544846af21457f8d08, type: 2}
     - sceneGUID: 1708fb413fd8d4a4b87fe1fe223ecfee
+      profile: {fileID: 11400000, guid: 47fcd59027cbcf544846af21457f8d08, type: 2}
+    - sceneGUID: 16c5d2c46b06338478c3cc783a6ab159
+      profile: {fileID: 11400000, guid: 47fcd59027cbcf544846af21457f8d08, type: 2}
+    - sceneGUID: c8778e0a0814fa34e988db846b0a0c81
       profile: {fileID: 11400000, guid: 47fcd59027cbcf544846af21457f8d08, type: 2}
     serializedBakeSettings:
     - sceneGUID: 9ceb12cd155edd24489426733e7efdb2
@@ -182,6 +190,30 @@ MonoBehaviour:
           useVirtualOffset: 1
           outOfGeoOffset: 0.01
           searchMultiplier: 0.2
+    - sceneGUID: 16c5d2c46b06338478c3cc783a6ab159
+      settings:
+        dilationSettings:
+          enableDilation: 1
+          dilationDistance: 1
+          dilationValidityThreshold: 0.25
+          dilationIterations: 1
+          squaredDistWeighting: 1
+        virtualOffsetSettings:
+          useVirtualOffset: 1
+          outOfGeoOffset: 0.01
+          searchMultiplier: 0.2
+    - sceneGUID: c8778e0a0814fa34e988db846b0a0c81
+      settings:
+        dilationSettings:
+          enableDilation: 1
+          dilationDistance: 1
+          dilationValidityThreshold: 0.25
+          dilationIterations: 1
+          squaredDistWeighting: 1
+        virtualOffsetSettings:
+          useVirtualOffset: 1
+          outOfGeoOffset: 0.01
+          searchMultiplier: 0.2
     serializedBakingSets:
     - name: Default
       sceneGUIDs:
@@ -190,6 +222,8 @@ MonoBehaviour:
       - 040bf0e89eb254a498dac2de670d1a81
       - 6c6648f67fd77b84fab075e4bf0507be
       - 1708fb413fd8d4a4b87fe1fe223ecfee
+      - 16c5d2c46b06338478c3cc783a6ab159
+      - c8778e0a0814fa34e988db846b0a0c81
       settings:
         dilationSettings:
           enableDilation: 1
