@@ -12,7 +12,7 @@ public class Projectile : MonoBehaviour
     {
         if(other.GetComponent<SwordController>())
         {
-            if(other.GetComponent<SwordController>().isBlocking && other.GetComponent<SwordController>().blockTimer < 1.5f)
+            if(other.GetComponent<SwordController>().isBlocking && other.GetComponent<SwordController>().blockTimer < 1)
             {
                 transform.localScale = transform.localScale * 2;
                 transform.position = other.GetComponent<SwordController>().Sword.position;
@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour
         }
         else if(other.GetComponent<Sword>())
         {
-            if (other.transform.root.GetComponent<SwordController>().isBlocking && other.transform.root.GetComponent<SwordController>().blockTimer < 1.5f)
+            if (other.transform.root.GetComponent<SwordController>().isBlocking && other.transform.root.GetComponent<SwordController>().blockTimer < 1)
             {
                 transform.localScale = transform.localScale * 2;
                 transform.position = other.transform.root.GetComponent<SwordController>().Sword.position;

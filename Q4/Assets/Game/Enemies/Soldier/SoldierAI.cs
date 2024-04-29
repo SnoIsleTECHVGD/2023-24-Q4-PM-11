@@ -39,7 +39,7 @@ public class SoldierAI : MonoBehaviour
 
         agent.updateRotation = false;
 
-        fireClock = Random.Range(1.1f, 1.8f);
+        fireClock = 1.3F;
     }
 
     void Update()
@@ -191,15 +191,19 @@ public class SoldierAI : MonoBehaviour
             {
                 fireTimer += Time.deltaTime;
 
-                if(fireTimer > fireClock)
+                if(fireTimer + .06f > fireClock)
                 {
-                    Vector3 randomPos = Random.insideUnitSphere * Random.Range(1, 2);
+                    anim.CrossFadeInFixedTime("Fire", .05f);
+
+                }
+                if (fireTimer > fireClock)
+                {
+                    Vector3 randomPos = Random.insideUnitSphere * Random.Range(1, 1.2f);
                     randomPos.y = 0;
                     Transform spawnedProjectile = Instantiate(projectile, barrel.position, Quaternion.identity);
                     spawnedProjectile.forward = player.transform.position + (new Vector3(0, .9f, 0) + randomPos) - head.position;
                     spawnedProjectile.GetComponent<Rigidbody>().AddForce(spawnedProjectile.forward * 25, ForceMode.Impulse);
                     fireTimer = 0;
-                    anim.CrossFadeInFixedTime("Fire", .05f);
                 }
             }
         }
