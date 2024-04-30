@@ -170,6 +170,7 @@ Material:
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
+    - _BendStrength: 0.5
     - _Blend: 0
     - _BlendMode: 0
     - _BumpScale: 1
@@ -182,7 +183,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DoubleSidedEnable: 1
     - _DoubleSidedGIMode: 0
-    - _DoubleSidedNormalMode: 2
+    - _DoubleSidedNormalMode: 0
     - _DstBlend: 0
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
@@ -252,11 +253,12 @@ Material:
     - Vector2_863FAA01: {r: 0, g: 3, b: 0, a: 0}
     - Vector2_8B223909: {r: 2, g: 1, b: 0, a: 0}
     - Vector2_A1C2B0F8: {r: 1, g: 1, b: 0, a: 0}
-    - _BaseColor: {r: 0, g: 0.77467656, b: 1, a: 1}
-    - _Color: {r: 0, g: 0.77467656, b: 1, a: 1}
-    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
+    - _BaseColor: {r: 0, g: 0.77647066, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.77647066, b: 1, a: 1}
+    - _Direction: {r: 1, g: 0, b: 0, a: 0}
+    - _DoubleSidedConstants: {r: -1, g: -1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FresnelColor: {r: 0.20558916, g: 0.32688156, b: 0.41509432, a: 1}
+    - _FresnelColor: {r: 0.53453183, g: 0.68259764, b: 0.7924528, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Tiling: {r: 15, g: 15, b: 0, a: 0}
   m_BuildTextureStacks: []

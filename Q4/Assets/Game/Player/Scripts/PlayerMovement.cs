@@ -92,12 +92,27 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (!transform.parent.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Up"))
+                if (transform.parent.name.Contains("(1)"))
                 {
-                    transform.parent.GetComponent<Animator>().CrossFadeInFixedTime("Up", .05f);
-                    characterController.enabled = false;
-                    StartCoroutine(enableCC(8.3f));
+                    if (!transform.parent.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("GoingUp"))
+                    {
+                        transform.parent.GetComponent<Animator>().Play("GoingUp");
+                        characterController.enabled = false;
+                        StartCoroutine(enableCC(8.3f));
+                    }
                 }
+                else
+                {
+                    if (!transform.parent.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Up"))
+                    {
+                        transform.parent.GetComponent<Animator>().Play("Up");
+                        characterController.enabled = false;
+                        StartCoroutine(enableCC(8.3f));
+                    }
+                }
+                
+
+
             }
         }
     }
