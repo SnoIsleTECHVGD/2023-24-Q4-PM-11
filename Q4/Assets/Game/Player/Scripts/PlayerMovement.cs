@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController characterController;
@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
 
     private float ySpeed;
     private float dashInternalTimer = 9999;
+
+    public TextMeshProUGUI uiText;
+    public GameObject crosshair;
+    public GameObject wasd;
 
     public float walkSpeed;
     public float runSpeed;
@@ -41,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
         if (canMove)
         {
             move = (transform.right * horizInput + transform.forward * vertInput).normalized;
+
+            if (move.magnitude > 0.1f)
+            {
+                wasd.SetActive(false);
+            }
         }
 
         var rayDown = new Ray(transform.position, Vector3.down * 2);
@@ -78,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         move.y = ySpeed;
         move = new Vector3(move.x, move.y + -vertInput, move.z);
 
-        if(sword.Sword)
+        if (sword.Sword)
         {
             move = dashAbility(move);
         }
@@ -88,32 +97,40 @@ public class PlayerMovement : MonoBehaviour
             characterController.Move(move * Time.deltaTime);
         }
 
-        if (transform.parent)
+        if (transform.parent && sword.Sword)
         {
+
+            if (!transform.parent.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Up"))
+            {
+                uiText.text = "\"F\" TO ASCEND";
+            }
+            else
+            {
+                uiText.text = "";
+            }
+
             if (Input.GetKeyDown(KeyCode.F))
             {
-                if (transform.parent.name.Contains("(1)"))
+
+                if (!transform.parent.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Up"))
                 {
-                    if (!transform.parent.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("GoingUp"))
-                    {
-                        transform.parent.GetComponent<Animator>().Play("GoingUp");
-                        characterController.enabled = false;
-                        StartCoroutine(enableCC(8.3f));
-                    }
+                    transform.parent.GetComponent<Animator>().Play("Up");
+                    characterController.enabled = false;
+                    StartCoroutine(enableCC(8.3f));
                 }
-                else
-                {
-                    if (!transform.parent.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Up"))
-                    {
-                        transform.parent.GetComponent<Animator>().Play("Up");
-                        characterController.enabled = false;
-                        StartCoroutine(enableCC(8.3f));
-                    }
-                }
-                
+
+
 
 
             }
+        }
+        else
+        {
+            if (sword.Sword)
+            {
+                uiText.text = "";
+            }
+
         }
     }
 

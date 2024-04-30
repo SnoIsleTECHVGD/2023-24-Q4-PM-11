@@ -103,19 +103,31 @@ public class SwordController : MonoBehaviour
         }
         else
         {
-            if(Input.GetKeyDown(KeyCode.F))
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 3))
             {
-                RaycastHit hit;
-                if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, 3))
+                if (hit.transform.name == "Sword")
                 {
-                    if(hit.transform.name == "Sword")
+                    if(movement.canMove)
                     {
-                      StartCoroutine(pickupAnimation(hit.transform));
+                        movement.uiText.text = "\"F\" TO PICKUP";
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+
+                        StartCoroutine(pickupAnimation(hit.transform));
                     }
                 }
+                else
+                {
+                    movement.uiText.text = "";
+                }
             }
+           
         }
     }
+
 
     Transform swordObject;
     public Transform wrist;
@@ -123,6 +135,8 @@ public class SwordController : MonoBehaviour
 
     IEnumerator pickupAnimation(Transform sword)
     {
+        movement.uiText.text = "";
+        movement.crosshair.SetActive(false);
         swordObject = sword;
         movement.canMove = false;
         Camera.main.transform.parent.GetComponent<CameraMovement>().setActive(false, false);
@@ -131,7 +145,7 @@ public class SwordController : MonoBehaviour
         float timeForMovingToPos = .6f;
 
         float timer = 0;
-        for(;;)
+        for (; ; )
         {
             transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(1.709999f, -0.9994947f, -0.8106022f), Time.deltaTime * 10);
             transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(new Vector3(0, -269.765f, 0)), Time.deltaTime * 15);
@@ -178,7 +192,7 @@ public class SwordController : MonoBehaviour
             yield return new WaitForEndOfFrame();
             anim.enabled = true;
             anim.Rebind();
-        }        
+        }
     }
 
     public void SetSwordParent()
