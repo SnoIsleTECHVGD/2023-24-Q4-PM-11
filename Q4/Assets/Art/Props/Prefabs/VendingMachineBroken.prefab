@@ -258,6 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1215280018263363645}
+  - component: {fileID: -945153508911393036}
   m_Layer: 0
   m_Name: VendingMachineBroken
   m_TagString: Untagged
@@ -282,8 +283,21 @@ Transform:
   - {fileID: 5297358522571237338}
   - {fileID: 8633381917554465784}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &-945153508911393036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987875311463139975}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.086014, y: 3.4925792, z: 1.756666}
+  m_Center: {x: -0.0038328937, y: 1.4932047, z: -0.00096396235}
 --- !u!1 &5076146238502617604
 GameObject:
   m_ObjectHideFlags: 0

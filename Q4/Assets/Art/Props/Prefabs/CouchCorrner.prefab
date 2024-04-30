@@ -177,6 +177,8 @@ GameObject:
   - component: {fileID: 5174842203950487570}
   - component: {fileID: 6579531656749753512}
   - component: {fileID: 4337006695266536079}
+  - component: {fileID: 6937573328962569802}
+  - component: {fileID: 7228440653564384519}
   m_Layer: 0
   m_Name: Cusions
   m_TagString: Untagged
@@ -249,6 +251,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6937573328962569802
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294779409337006981}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08502136, y: 0.029567204, z: 0.028145937}
+  m_Center: {x: -0.00448565, y: -0.00094825146, z: -0.0006571704}
+--- !u!65 &7228440653564384519
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5294779409337006981}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.029363126, y: 0.084709674, z: 0.026752625}
+  m_Center: {x: -0.032314714, y: -0.028519506, z: 0.000039492847}
 --- !u!1 &6945581166229864633
 GameObject:
   m_ObjectHideFlags: 0
