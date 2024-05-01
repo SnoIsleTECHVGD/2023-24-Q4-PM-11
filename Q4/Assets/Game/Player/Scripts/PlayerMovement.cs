@@ -27,16 +27,19 @@ public class PlayerMovement : MonoBehaviour
 
     public bool canMove = true;
     public bool isDashing = false;
+    Vector3 move = Vector3.zero;
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         sword = GetComponent<SwordController>();
+
+        StartCoroutine(footstepLoop());
     }
 
     void Update()
     {
-        Vector3 move = Vector3.zero;
+
         float horizInput = Input.GetAxisRaw("Horizontal");
         float vertInput = Input.GetAxisRaw("Vertical");
 
@@ -149,6 +152,8 @@ public class PlayerMovement : MonoBehaviour
                     dashInternalTimer = 0;
                     if (sword.swingTimer > .36f)
                     {
+                        footstepSource.PlayOneShot(dash, .275f);
+
                         if (Input.GetKey(KeyCode.W))
                         {
                             sword.anim.CrossFade("DashForward", .1f);
@@ -194,6 +199,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Elevator")
         {
+            if (!transform.parent)
+            {
+            }
             transform.parent = other.transform;
             lastPlatformPos = other.transform.position;
 
@@ -205,6 +213,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Elevator")
         {
+
             transform.parent = null;
         }
     }
@@ -213,5 +222,47 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         characterController.enabled = true;
+    }
+
+    public float footstepInterval;
+    public float footstepVolume;
+    public AudioSource footstepSource;
+    public AudioClip[] footsteps;
+    public AudioClip dash;
+    IEnumerator footstepLoop()
+    {
+        float timer = 0;
+        for (; ; )
+        {
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                if(!isDashing && enabled)
+                {
+                    timer += Time.deltaTime;
+
+                    if (Input.GetKey(KeyCode.LeftShift))
+                    {
+
+                        if (timer > footstepInterval / 1.4f)
+                        {
+                            timer = 0;
+                            footstepSource.PlayOneShot(footsteps[Random.Range(0, footsteps.Length)], footstepVolume);
+
+                        }
+                    }
+                    else
+                    {
+
+                        if (timer > footstepInterval)
+                        {
+                            timer = 0;
+                            footstepSource.PlayOneShot(footsteps[Random.Range(0, footsteps.Length)], footstepVolume);
+
+                        }
+                    }
+                }            
+            }
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

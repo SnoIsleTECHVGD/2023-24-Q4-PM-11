@@ -14,6 +14,8 @@ public class MenuUI : MonoBehaviour
     public GameObject SophiaPanel;
     public GameObject FinchPanel;
 
+    public AudioSource onClick;
+
     private void Start()
     {
         StartMenu.SetActive(true);
@@ -22,11 +24,13 @@ public class MenuUI : MonoBehaviour
     }
     public void Level()
     {
+        onClick.Play();
         SceneManager.LoadScene("Game");
     }
 
     public void Credits()
     {
+        onClick.Play();
         StartMenu.SetActive(false);
         CreditMenu.SetActive(true);
         
@@ -34,6 +38,7 @@ public class MenuUI : MonoBehaviour
 
     public void ClearCredits()
     {
+        onClick.Play();
         DylanPanel.SetActive(false);
         MarcusPanel.SetActive(false);
         SophiaPanel.SetActive(false);
@@ -41,6 +46,7 @@ public class MenuUI : MonoBehaviour
     }
     public void Dylan()
     {
+        onClick.Play();
         DylanPanel.SetActive(true);
         MarcusPanel.SetActive(false);
         SophiaPanel.SetActive(false);
@@ -49,6 +55,7 @@ public class MenuUI : MonoBehaviour
 
     public void Marcus()
     {
+        onClick.Play();
         DylanPanel.SetActive(false);
         MarcusPanel.SetActive(true);
         SophiaPanel.SetActive(false);
@@ -57,6 +64,7 @@ public class MenuUI : MonoBehaviour
 
     public void Sophia()
     {
+        onClick.Play();
         DylanPanel.SetActive(false);
         MarcusPanel.SetActive(false);
         SophiaPanel.SetActive(true);
@@ -65,6 +73,7 @@ public class MenuUI : MonoBehaviour
 
     public void Finch()
     {
+        onClick.Play();
         DylanPanel.SetActive(false);
         MarcusPanel.SetActive(false);
         SophiaPanel.SetActive(false);
@@ -73,17 +82,20 @@ public class MenuUI : MonoBehaviour
 
     public void Exit()
     {
+        onClick.Play();
         Application.Quit();
     }
 
     public void Settings()
     {
+        onClick.Play();
         StartMenu.SetActive(false);
         SettingsMenu.SetActive(true);
     }
 
     public void Main()
     {
+        onClick.Play();
         StartMenu.SetActive(true);
         CreditMenu.SetActive(false);
         SettingsMenu.SetActive(false);

@@ -192,6 +192,8 @@ public class SwordController : MonoBehaviour
             yield return new WaitForEndOfFrame();
             anim.enabled = true;
             anim.Rebind();
+
+            Sword.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 

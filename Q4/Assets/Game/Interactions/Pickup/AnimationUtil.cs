@@ -7,6 +7,12 @@ public class AnimationUtil : MonoBehaviour
     public MeshRenderer[] meshRenderers;
     public Material scary;
     public GameObject dof;
+    public MusicController controller;
+
+    public void transitionMusic()
+    {
+        StartCoroutine(controller.TransitionLobbyToFloorOne());
+    }
     public void SetSwordParent()
     {
         FindObjectOfType<SwordController>().SetSwordParent();

@@ -23,6 +23,9 @@ public class SoldierAI : MonoBehaviour
     public Transform head;
     public Transform hitEffectPosition;
 
+    public AudioSource source;
+    public AudioClip shotAudio;
+
     public Material badBoyMat;
 
 
@@ -200,10 +203,11 @@ public class SoldierAI : MonoBehaviour
                 {
                     Vector3 randomPos = Random.insideUnitSphere * Random.Range(1, 1.2f);
                     randomPos.y = 0;
-                    Transform spawnedProjectile = Instantiate(projectile, barrel.position, Quaternion.identity);
+                    Transform spawnedProjectile = Instantiate(projectile, barrel.position + (transform.forward / 2), Quaternion.identity);
                     spawnedProjectile.forward = player.transform.position + (new Vector3(0, .9f, 0) + randomPos) - head.position;
                     spawnedProjectile.GetComponent<Rigidbody>().AddForce(spawnedProjectile.forward * 25, ForceMode.Impulse);
                     fireTimer = 0;
+                    source.PlayOneShot(shotAudio, .2f);
                 }
             }
         }
@@ -217,9 +221,14 @@ public class SoldierAI : MonoBehaviour
     }
 
 
+    public AudioClip[] impacts;
+
     public void takeDamage(int damage, Vector3 forward)
     {
         health -= damage;
+
+        source.PlayOneShot(impacts[Random.Range(0, impacts.Length)], .1f);
+
 
         if (health <= 0)
         {

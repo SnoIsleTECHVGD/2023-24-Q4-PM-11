@@ -10,6 +10,10 @@ public class HitDetection : MonoBehaviour
 
     public GameObject swordTrail;
 
+    public AudioSource source;
+    public AudioClip[] swings;
+    public AudioClip dink;
+
     public void StartHit()
     {
         isHitting = true;
@@ -24,5 +28,16 @@ public class HitDetection : MonoBehaviour
     public void setSwordTrail(int active)
     {
         swordTrail.SetActive(active == 1);
+    }
+
+    public void SwingAudio()
+    {
+        source.PlayOneShot(swings[Random.Range(0, swings.Length)], .33f);
+    }
+
+    public void Dink()
+    {
+        source.PlayOneShot(dink, .4f);
+
     }
 }

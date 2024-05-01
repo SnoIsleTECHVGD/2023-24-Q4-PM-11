@@ -10,7 +10,8 @@ public class Sword : MonoBehaviour
     public Transform hitEffect;
     public LayerMask ignore;
 
-    private void OnTriggerStay(Collider collision)
+  
+    private void OnCollisionStay(Collision collision)
     {
         if (hit.isHitting && collision.transform.GetComponent<Hitbox>())
         {
