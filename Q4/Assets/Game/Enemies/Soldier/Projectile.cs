@@ -25,6 +25,7 @@ public class Projectile : MonoBehaviour
             else
             {
                 print("Player Hit");
+                other.GetComponent<HealthController>().TakeDamage(15);
                 Destroy(this.gameObject);
             }
         }
@@ -43,6 +44,8 @@ public class Projectile : MonoBehaviour
             else
             {
                 print("Player Hit");
+                other.transform.root.GetComponent<HealthController>().TakeDamage(15);
+
                 Destroy(this.gameObject);
             }
         }
