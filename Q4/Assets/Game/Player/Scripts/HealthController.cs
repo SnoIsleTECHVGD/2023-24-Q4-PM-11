@@ -24,7 +24,7 @@ public class HealthController : MonoBehaviour
     {
         if(sword.Sword)
         {
-            Health = Mathf.Clamp(Health + Time.deltaTime * 3, 0, 100);
+            Health = Mathf.Clamp(Health + Time.deltaTime * 8, 0, 100);
             swordMat.SetColor("_EmissiveColor", Color.Lerp(swordMat.GetColor("_EmissiveColor"), healthGradient.Evaluate(Health / 100) * 6, Time.deltaTime * 8));
         }     
     }

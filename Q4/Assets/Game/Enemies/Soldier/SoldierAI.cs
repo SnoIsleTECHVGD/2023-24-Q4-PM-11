@@ -41,23 +41,29 @@ public class SoldierAI : MonoBehaviour
         startPos = transform.position;
 
         agent.updateRotation = false;
+        agent.updatePosition = false;
 
         fireClock = 1.3F;
     }
 
     void Update()
     {
-        Vector3 worldDeltaPosition = (agent.steeringTarget + transform.forward) - transform.position;
+
+
+        Vector3 worldDeltaPosition = agent.nextPosition - transform.position;
+
+        // Map 'worldDeltaPosition' to local space
         float dx = Vector3.Dot(transform.right, worldDeltaPosition);
         float dy = Vector3.Dot(transform.forward, worldDeltaPosition);
         Vector2 deltaPosition = new Vector2(dx, dy);
 
+        // Low-pass filter the deltaMove
         float smooth = Mathf.Min(1.0f, Time.deltaTime / 0.15f);
         smoothDeltaPosition = Vector2.Lerp(smoothDeltaPosition, deltaPosition, smooth);
 
+        // Update velocity if time advances
         if (Time.deltaTime > 1e-5f)
             velocity = smoothDeltaPosition / Time.deltaTime;
-
 
         if (update)
         {
@@ -71,6 +77,13 @@ public class SoldierAI : MonoBehaviour
                 StartCoroutine(combatState());
             }
         }
+    }
+
+
+    void OnAnimatorMove()
+    {
+        // Update position to agent position
+        transform.position = agent.nextPosition;
     }
 
 
@@ -128,8 +141,8 @@ public class SoldierAI : MonoBehaviour
 
             for (;;)
             {
-                anim.SetFloat("x", velocity.x, 1, Time.deltaTime);
-                anim.SetFloat("y", velocity.y, 1, Time.deltaTime);
+                anim.SetFloat("x", velocity.x, .2f, Time.deltaTime);
+                anim.SetFloat("y", velocity.y, .2f, Time.deltaTime);
 
                 var lookPos = player.position - transform.position;
                 lookPos.y = 0;
@@ -162,8 +175,8 @@ public class SoldierAI : MonoBehaviour
 
             for (; ; )
             {
-                anim.SetFloat("x", velocity.x, 1, Time.deltaTime);
-                anim.SetFloat("y", velocity.y, 1, Time.deltaTime);
+                anim.SetFloat("x", velocity.x, .2f, Time.deltaTime);
+                anim.SetFloat("y", velocity.y, .2f, Time.deltaTime);
                 fireLoop();
                 var lookPos = player.position - transform.position;
                 lookPos.y = 0;
@@ -197,7 +210,6 @@ public class SoldierAI : MonoBehaviour
                 if(fireTimer + .06f > fireClock)
                 {
                     anim.CrossFadeInFixedTime("Fire", .05f);
-
                 }
                 if (fireTimer > fireClock)
                 {
@@ -232,7 +244,7 @@ public class SoldierAI : MonoBehaviour
 
         if (health <= 0)
         {
-            Transform rag = Instantiate(guardRagdoll, transform.position, transform.rotation);
+            Transform rag = Instantiate(guardRagdoll, transform.position - new Vector3(0, 1, 0), transform.rotation);
 
 
             Rigidbody[] allRigids = rag.GetComponentsInChildren<Rigidbody>();
@@ -273,10 +285,10 @@ public class SoldierAI : MonoBehaviour
                     if (angle <= 65)
                     {
                         this.player = player;
-                        Material[] oldMats = transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials;
-                        oldMats[4] = badBoyMat;
+                        Material[] oldMats = transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().materials;
+                        oldMats[5] = badBoyMat;
 
-                        transform.GetChild(0).GetComponent<SkinnedMeshRenderer>().materials = oldMats;
+                        transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().materials = oldMats;
 
                         return true;
                     }
@@ -302,4 +314,6 @@ public class SoldierAI : MonoBehaviour
 
         return false;
     }
+
+  
 }
