@@ -42,13 +42,13 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: 231.1
+    m_Value: 1864.3
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 231.1
+    m_Value: 1880.7
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 19.8
+    m_Value: 280
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
