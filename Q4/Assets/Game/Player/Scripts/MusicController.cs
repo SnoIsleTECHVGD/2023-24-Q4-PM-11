@@ -9,7 +9,7 @@ public class MusicController : MonoBehaviour
     public AudioClip elevator;
 
 
-    public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+    public IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
     {
         float currentTime = 0;
         float start = audioSource.volume;

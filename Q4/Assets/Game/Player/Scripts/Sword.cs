@@ -17,8 +17,7 @@ public class Sword : MonoBehaviour
         {
             if (!hit.currentHitIds.Contains(collision.transform.GetInstanceID()))
             {
-                hit.currentHitIds.Add(collision.transform.GetInstanceID());
-                
+                hit.currentHitIds.Add(collision.transform.GetInstanceID());             
 
                 if (collision.transform.tag == "Guard")
                 {
@@ -26,6 +25,22 @@ public class Sword : MonoBehaviour
 
                     RaycastHit hit;
                     if(Physics.Raycast(Camera.main.transform.position, collision.transform.GetComponent<SoldierAI>().hitEffectPosition.position - Camera.main.transform.position, out hit, 5, ~ignore))
+                    {
+                        if (hit.transform == collision.transform)
+                        {
+                            var instaniatedEffect = Instantiate(hitEffect, collision.transform);
+                            instaniatedEffect.position = hit.point;
+                            Destroy(instaniatedEffect.gameObject, 2);
+                        }
+                    }
+                }
+
+                if (collision.transform.tag == "Patient")
+                {
+                    collision.transform.GetComponent<Patient>().takeDamage(20, transform.root.GetComponent<SwordController>().Sword.forward);
+
+                    RaycastHit hit;
+                    if (Physics.Raycast(Camera.main.transform.position, collision.transform.GetComponent<Patient>().hitEffectPosition.position - Camera.main.transform.position, out hit, 5, ~ignore))
                     {
                         if (hit.transform == collision.transform)
                         {

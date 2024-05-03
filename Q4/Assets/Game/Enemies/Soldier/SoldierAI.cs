@@ -82,7 +82,6 @@ public class SoldierAI : MonoBehaviour
 
     void OnAnimatorMove()
     {
-        // Update position to agent position
         transform.position = agent.nextPosition;
     }
 
@@ -237,6 +236,9 @@ public class SoldierAI : MonoBehaviour
 
     public void takeDamage(int damage, Vector3 forward)
     {
+        fireTimer = 0;
+        anim.CrossFadeInFixedTime("Hit", .05f);
+
         health -= damage;
 
         source.PlayOneShot(impacts[Random.Range(0, impacts.Length)], .1f);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class SwordController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class SwordController : MonoBehaviour
 
     public float comboTimer = 0;
     public float swingTimer = 0;
+
+    public Material swordMat;
 
     void Start()
     {
@@ -135,6 +138,7 @@ public class SwordController : MonoBehaviour
 
     IEnumerator pickupAnimation(Transform sword)
     {
+
         movement.uiText.text = "";
         movement.crosshair.SetActive(false);
         swordObject = sword;
@@ -143,6 +147,9 @@ public class SwordController : MonoBehaviour
         Camera.main.transform.parent.GetChild(0).GetComponent<Sway>().enabled = false;
         transform.parent = sword.parent;
         float timeForMovingToPos = .6f;
+
+        StartCoroutine(transform.parent.GetComponent<AnimationUtil>().controller.StartFade(transform.parent.GetComponent<AnimationUtil>().controller.source, .5f, .05f));
+
 
         float timer = 0;
         for (; ; )
@@ -194,6 +201,15 @@ public class SwordController : MonoBehaviour
             anim.Rebind();
 
             Sword.GetComponent<Rigidbody>().isKinematic = false;
+
+            Sword.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Weapon");
+            Sword.GetChild(1).gameObject.layer = LayerMask.NameToLayer("Weapon");
+
+            swordMat.SetColor("_BaseColor", new Color(0.2830189f, 0.2830189f, 0.2830189f));
+
+            anim.transform.GetChild(4).gameObject.layer = LayerMask.NameToLayer("Weapon");
+            anim.transform.GetChild(1).gameObject.layer = LayerMask.NameToLayer("Weapon");
+
         }
     }
 
