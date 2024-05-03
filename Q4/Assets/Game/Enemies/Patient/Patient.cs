@@ -102,7 +102,7 @@ public class Patient : MonoBehaviour
         {
             anim.SetBool("Running", true);
             anim.SetBool("Walking", true);
-            agent.speed = 2.1f;
+            agent.speed = 2.9f;
             if (update)
             {
                 privTime = 0;
@@ -124,7 +124,7 @@ public class Patient : MonoBehaviour
                     {
                         anim.CrossFadeInFixedTime("SwingL", .1f);
                     }
-                    player.GetComponent<HealthController>().TakeDamage(18);
+                    player.GetComponent<HealthController>().TakeDamage(28);
                     privTime = 0;
                 }
             }

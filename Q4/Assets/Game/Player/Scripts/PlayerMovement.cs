@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
             characterController.Move(move * Time.deltaTime);
         }
 
-        if (transform.parent && sword.Sword)
+        if (transform.parent && sword.Sword && transform.parent.GetComponent<Elevator>().isOpen)
         {
 
             if (!transform.parent.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Up"))

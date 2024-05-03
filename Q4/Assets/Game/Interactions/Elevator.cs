@@ -11,6 +11,27 @@ public class Elevator : MonoBehaviour
     public AudioClip ding;
     public AudioClip goingUpLoop;
 
+    public List<Transform> enemies;
+
+    public bool isOpen = false;
+
+    private void Update()
+    {
+        if(enemies.Count == 0 && !isOpen)
+        {
+            isOpen = true;
+            GetComponent<Animator>().Play("Open");
+        }
+
+        foreach(Transform transform in enemies.ToArray()) 
+        {
+            if(!transform)
+            {
+                enemies.Remove(transform);
+            }
+        }
+    }
+
     public void Close()
     {
         StartCoroutine(controller.TransitionFloorToElevator());
