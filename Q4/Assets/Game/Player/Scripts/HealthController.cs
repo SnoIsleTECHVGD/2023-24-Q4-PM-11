@@ -49,7 +49,8 @@ public class HealthController : MonoBehaviour
 
             if (Health < previousHealth)
             {
-                onHit.PlayOneShot(onHitClip, 1);
+                onHit.pitch = Random.Range(.9f, 1.1f);
+                onHit.PlayOneShot(onHitClip, .4f);
                 if (Health <= 0)
                 {
 

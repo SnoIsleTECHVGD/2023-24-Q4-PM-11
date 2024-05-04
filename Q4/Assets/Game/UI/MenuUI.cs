@@ -16,6 +16,8 @@ public class MenuUI : MonoBehaviour
 
     public AudioSource onClick;
 
+    public Fade fade;
+
     private void Start()
     {
         StartMenu.SetActive(true);
@@ -25,7 +27,7 @@ public class MenuUI : MonoBehaviour
     public void Level()
     {
         onClick.Play();
-        SceneManager.LoadScene("Game");
+        StartCoroutine(fade.fadeOut());
     }
 
     public void Credits()

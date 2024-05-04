@@ -9,6 +9,13 @@ public class AnimationUtil : MonoBehaviour
     public GameObject dof;
     public MusicController controller;
 
+    public AudioSource source;
+    public AudioClip doorClose;
+
+    public void doorCloseAud()
+    {
+        source.PlayOneShot(doorClose, .08f);
+    }
     public void transitionMusic()
     {
         StartCoroutine(controller.TransitionLobbyToFloorOne());

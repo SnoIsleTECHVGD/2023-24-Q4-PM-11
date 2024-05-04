@@ -54,6 +54,11 @@ public class Projectile : MonoBehaviour
             other.GetComponent<SoldierAI>().takeDamage(9999, -transform.forward);
             Destroy(this.gameObject);
         }
+        else if (other.GetComponent<Patient>())
+        {
+            other.GetComponent<Patient>().takeDamage(9999, -transform.forward);
+            Destroy(this.gameObject);
+        }
         else
         {
             Destroy(this.gameObject);
