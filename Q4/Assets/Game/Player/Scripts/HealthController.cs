@@ -53,7 +53,12 @@ public class HealthController : MonoBehaviour
                 onHit.PlayOneShot(onHitClip, .4f);
                 if (Health <= 0)
                 {
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
 
+                    Camera.main.transform.parent = null;
+                    Camera.main.transform.GetChild(0).gameObject.SetActive(true);
+                    Destroy(gameObject);
                 }
                 timer = 0;
 

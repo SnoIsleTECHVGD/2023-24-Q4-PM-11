@@ -14,7 +14,7 @@ public class CameraMovement : MonoBehaviour
     [SerializeField]
     public bool isActive = true;
 
-    private bool cursorShown;
+    public  bool cursorShown;
 
     public float sensitivity = 1f;
     public float smoothing = 1.3f;

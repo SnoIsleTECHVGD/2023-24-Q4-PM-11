@@ -29,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
     public bool isDashing = false;
     Vector3 move = Vector3.zero;
 
+    public GameObject pause;
+    public CameraMovement cam;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -39,7 +42,32 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            if(pause.GetComponent<RectTransform>().localScale == new Vector3(1.1775f, 1.1775f, 1.1775f))
+            {
+                cam.enabled = true;
 
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+
+                pause.GetComponent<RectTransform>().localScale = Vector3.zero;
+                Time.timeScale = 1.0f;
+            }
+            else
+            {
+                cam.enabled = false;
+                Time.timeScale = 0;
+
+
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+
+
+                pause.GetComponent<RectTransform>().localScale = new Vector3(1.1775f, 1.1775f, 1.1775f);
+
+            }
+        }
         float horizInput = Input.GetAxisRaw("Horizontal");
         float vertInput = Input.GetAxisRaw("Vertical");
 
@@ -242,7 +270,6 @@ public class PlayerMovement : MonoBehaviour
 
                     if (Input.GetKey(KeyCode.LeftShift))
                     {
-
                         if (timer > footstepInterval / 1.4f)
                         {
                             timer = 0;

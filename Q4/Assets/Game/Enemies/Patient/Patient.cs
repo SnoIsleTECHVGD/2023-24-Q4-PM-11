@@ -27,6 +27,7 @@ public class Patient : MonoBehaviour
 
     void Start()
     {
+        player = FindObjectOfType<PlayerMovement>().transform;
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         idleTimer = Random.Range(2.4f, 5.6f);
@@ -63,7 +64,7 @@ public class Patient : MonoBehaviour
                 return;
             }
 
-            if (canSeePlayer(20))
+            if (canSeePlayer(20) || Vector3.Distance(player.position, transform.position) < 5)
             {
                 currentState = State.Combat;
                 update = true;
@@ -90,7 +91,7 @@ public class Patient : MonoBehaviour
             anim.SetBool("Running", false);
             agent.speed = 1.4f;
 
-            if (canSeePlayer(20))
+            if (canSeePlayer(20) || Vector3.Distance(player.position, transform.position) < 2)
             {
                 currentState = State.Combat;
                 update = true;
@@ -124,7 +125,18 @@ public class Patient : MonoBehaviour
                     {
                         anim.CrossFadeInFixedTime("SwingL", .1f);
                     }
-                    player.GetComponent<HealthController>().TakeDamage(28);
+
+                    if (player.GetComponent<SwordController>().isBlocking && player.GetComponent<SwordController>().blockTimer < 1)
+                    {
+                        if (!player.GetComponent<SwordController>().anim.GetCurrentAnimatorStateInfo(0).IsName("SwordBlockHit"))
+                        {
+                            player.GetComponent<SwordController>().anim.CrossFadeInFixedTime("SwordBlockHit", .01f);
+                        }
+                    }
+                    else
+                    {
+                        player.GetComponent<HealthController>().TakeDamage(28);
+                    }
                     privTime = 0;
                 }
             }
@@ -218,38 +230,28 @@ public class Patient : MonoBehaviour
 
 
     public bool canSeePlayer(float range)
-    {
-        Collider[] localTransforms = Physics.OverlapSphere(transform.position, range);
-        Transform player = null;
-
-        foreach (Collider coll in localTransforms)
-        {
-            if (coll.transform.name == "Player")
-            {
-                player = coll.transform;
-            }
-
-        }
-
+    {      
         if (player)
         {
             RaycastHit hit;
             if (Physics.Raycast(head.position, Camera.main.transform.position - head.position, out hit, range))
             {
                 if (hit.transform.name == "Player")
-                {
+                {                  
                     float angle = Vector3.Angle(player.transform.position - transform.position, transform.forward);
 
                     if (angle <= 65)
-                    {
-                        this.player = player;
-                      
-
+                    {                      
                         return true;
                     }
+                   
+
                 }
             }
+        
         }
+
+
 
         return false;
     }
