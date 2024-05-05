@@ -12564,9 +12564,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fade
       objectReference: {fileID: 0}
+    - target: {fileID: 809942705354964257, guid: 1ab91a110a8270948ad3d021dd94a00e, type: 3}
+      propertyPath: FadeOut
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 809942705354964257, guid: 1ab91a110a8270948ad3d021dd94a00e, type: 3}
+      propertyPath: TimeToFade
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 809942705354964258, guid: 1ab91a110a8270948ad3d021dd94a00e, type: 3}
       propertyPath: m_Alpha
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 809942705354964261, guid: 1ab91a110a8270948ad3d021dd94a00e, type: 3}
       propertyPath: m_Pivot.x

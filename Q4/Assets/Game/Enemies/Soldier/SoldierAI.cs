@@ -44,6 +44,8 @@ public class SoldierAI : MonoBehaviour
         agent.updatePosition = false;
 
         fireClock = 1.3F;
+
+        fireTimer = Random.Range(.5f, 1.1f);
     }
 
     void Update()

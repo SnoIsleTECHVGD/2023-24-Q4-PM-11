@@ -91,7 +91,7 @@ public class Patient : MonoBehaviour
             anim.SetBool("Running", false);
             agent.speed = 1.4f;
 
-            if (canSeePlayer(20) || Vector3.Distance(player.position, transform.position) < 2)
+            if (canSeePlayer(20) || Vector3.Distance(player.position, transform.position) < 5)
             {
                 currentState = State.Combat;
                 update = true;
@@ -110,12 +110,12 @@ public class Patient : MonoBehaviour
                 update = false;
             }
             agent.destination = player.transform.position;
-
+            agent.updateRotation = false;
             privTime += Time.deltaTime;
 
             if(privTime > 1.7f)
             {
-                if(canSeePlayer(1.5f))
+                if(canSeePlayer(.6f))
                 {
                     if(Random.value > .5f)
                     {
@@ -125,21 +125,15 @@ public class Patient : MonoBehaviour
                     {
                         anim.CrossFadeInFixedTime("SwingL", .1f);
                     }
-
-                    if (player.GetComponent<SwordController>().isBlocking && player.GetComponent<SwordController>().blockTimer < 1)
-                    {
-                        if (!player.GetComponent<SwordController>().anim.GetCurrentAnimatorStateInfo(0).IsName("SwordBlockHit"))
-                        {
-                            player.GetComponent<SwordController>().anim.CrossFadeInFixedTime("SwordBlockHit", .01f);
-                        }
-                    }
-                    else
-                    {
-                        player.GetComponent<HealthController>().TakeDamage(28);
-                    }
+                  
                     privTime = 0;
                 }
             }
+
+            var lookPos = player.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 7);
 
 
 
@@ -254,5 +248,24 @@ public class Patient : MonoBehaviour
 
 
         return false;
+    }
+
+    public void attack()
+    {
+        if (canSeePlayer(1))
+        {
+
+            if (player.GetComponent<SwordController>().isBlocking && player.GetComponent<SwordController>().blockTimer < 1)
+            {
+                if (!player.GetComponent<SwordController>().anim.GetCurrentAnimatorStateInfo(0).IsName("SwordBlockHit"))
+                {
+                    player.GetComponent<SwordController>().anim.CrossFadeInFixedTime("SwordBlockHit", .01f);
+                }
+            }
+            else
+            {
+                player.GetComponent<HealthController>().TakeDamage(28);
+            }
+        }
     }
 }

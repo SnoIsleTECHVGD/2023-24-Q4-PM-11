@@ -17,8 +17,6 @@ public class Pause : MonoBehaviour
 
         Time.timeScale = 1.0f;
 
-        Time.timeScale = 1.0f;
-
         GetComponent<RectTransform>().localScale = Vector3.zero;
 
     }

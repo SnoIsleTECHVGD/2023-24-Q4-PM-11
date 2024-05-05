@@ -35,7 +35,7 @@ public class MenuUI : MonoBehaviour
         onClick.Play();
         StartMenu.SetActive(false);
         CreditMenu.SetActive(true);
-        
+
     }
 
     public void ClearCredits()
@@ -85,7 +85,19 @@ public class MenuUI : MonoBehaviour
     public void Exit()
     {
         onClick.Play();
+        fade.FadeIn = true;
+        StartCoroutine(waitExit());
+    }
+
+    IEnumerator waitExit()
+    {
+        yield return new WaitForSeconds(2.5f);
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
+
     }
 
     public void Settings()

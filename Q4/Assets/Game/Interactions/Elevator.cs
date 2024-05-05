@@ -43,6 +43,12 @@ public class Elevator : MonoBehaviour
 
     }
 
+    public void OpenBoss()
+    {
+        StartCoroutine(controller.TransitionElevatorToBoss());
+
+    }
+
     public void GoUp()
     {
         elevatorAud.volume = 0;

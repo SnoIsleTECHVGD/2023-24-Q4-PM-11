@@ -58,6 +58,7 @@ public class HealthController : MonoBehaviour
 
                     Camera.main.transform.parent = null;
                     Camera.main.transform.GetChild(0).gameObject.SetActive(true);
+                    Camera.main.transform.GetChild(1).GetComponent<AudioSource>().pitch = .64f;
                     Destroy(gameObject);
                 }
                 timer = 0;
