@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class Fade : MonoBehaviour
 {
@@ -47,6 +49,14 @@ public class Fade : MonoBehaviour
             }
 
         }
+
+        if(canSkip)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene(1);
+            }
+        }
     }
 
     public void IN()
@@ -59,7 +69,8 @@ public class Fade : MonoBehaviour
         FadeIn = true;
     }
 
-
+    public VideoPlayer vid;
+    public List<GameObject> onDisable = new List<GameObject>();
     public IEnumerator fadeOut()
     {
         for (; ; )
@@ -69,12 +80,41 @@ public class Fade : MonoBehaviour
                 this.CanvasGroup.alpha += this.TimeToFade * Time.deltaTime;
                 if (this.CanvasGroup.alpha == 1f)
                 {
-                    this.LoadScene(1);
+                    foreach(GameObject gameObject in this.onDisable)
+                    {
+                        gameObject.SetActive(false);
+                    }
+                    vid.Play();
+                    vid.transform.GetChild(0).gameObject.SetActive(true);
+                    transform.parent.GetChild(0).gameObject.SetActive(false);
+                    break;
                 }
             }
             yield return new WaitForEndOfFrame();
         }
+
+        float time = 0;
+        for (; ; )
+        {
+            canSkip = true;
+            if (time > .1f)
+            {
+                this.CanvasGroup.alpha = 0;
+            }
+
+          
+
+            time += Time.deltaTime;
+            if(time > 17.1f)
+            {
+                SceneManager.LoadScene(1);
+            }
+            yield return new WaitForEndOfFrame();
+
+        }
     }
+
+    private bool canSkip = false;
 
 
     AsyncOperation asyncLoad;

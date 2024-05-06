@@ -134,9 +134,6 @@ public class Patient : MonoBehaviour
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 7);
-
-
-
         }
     }
 
@@ -148,7 +145,6 @@ public class Patient : MonoBehaviour
         Idle,
         Combat,
         Wander
-
     }
 
     public Vector3 getWanderPosition(float distance)
@@ -191,7 +187,7 @@ public class Patient : MonoBehaviour
 
     public void takeDamage(int damage, Vector3 forward)
     {
-        privTime = 0;
+      //  privTime = Random.Range(.6f, 1.3f);
         if (currentState != State.Combat)
         {
             player = FindObjectOfType<PlayerMovement>().transform;
@@ -199,7 +195,10 @@ public class Patient : MonoBehaviour
             update = true;
         }
 
-        anim.CrossFadeInFixedTime("Hit", .05f);
+        if(!anim.GetCurrentAnimatorStateInfo(1).IsName("SwingR") && !anim.GetCurrentAnimatorStateInfo(1).IsName("SwingL"))
+        {
+            anim.CrossFadeInFixedTime("Hit", .05f);
+        }
         health -= damage;
 
         source.PlayOneShot(impacts[Random.Range(0, impacts.Length)], .1f);
@@ -209,14 +208,12 @@ public class Patient : MonoBehaviour
         {
             Transform rag = Instantiate(ragdoll, transform.position, transform.rotation);
 
-
             Rigidbody[] allRigids = rag.GetComponentsInChildren<Rigidbody>();
 
             foreach (Rigidbody rigidbody in allRigids)
             {
                 rigidbody.AddForce(forward * 13, ForceMode.Impulse);
             }
-
             Destroy(rag.gameObject, 15);
             Destroy(gameObject);
         }
@@ -237,16 +234,11 @@ public class Patient : MonoBehaviour
                     if (angle <= 65)
                     {                      
                         return true;
-                    }
-                   
-
+                    }                  
                 }
             }
         
         }
-
-
-
         return false;
     }
 
@@ -254,7 +246,6 @@ public class Patient : MonoBehaviour
     {
         if (canSeePlayer(1))
         {
-
             if (player.GetComponent<SwordController>().isBlocking && player.GetComponent<SwordController>().blockTimer < 1)
             {
                 if (!player.GetComponent<SwordController>().anim.GetCurrentAnimatorStateInfo(0).IsName("SwordBlockHit"))

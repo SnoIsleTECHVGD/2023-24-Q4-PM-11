@@ -34,6 +34,8 @@ public class SoldierAI : MonoBehaviour
 
     private float fireClock;
 
+    public LayerMask mask;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -45,7 +47,7 @@ public class SoldierAI : MonoBehaviour
 
         fireClock = 1.3F;
 
-        fireTimer = Random.Range(.5f, 1.1f);
+        fireTimer = Random.Range(.8f, 1.2f);
     }
 
     void Update()
@@ -280,7 +282,7 @@ public class SoldierAI : MonoBehaviour
         if (player)
         {
             RaycastHit hit;
-            if (Physics.Raycast(head.position, Camera.main.transform.position - head.position, out hit, range))
+            if (Physics.Raycast(head.position, Camera.main.transform.position - head.position, out hit, range, ~mask))
             {
                 if (hit.transform.name == "Player")
                 {
