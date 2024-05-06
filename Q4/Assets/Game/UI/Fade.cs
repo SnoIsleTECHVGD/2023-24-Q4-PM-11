@@ -19,6 +19,7 @@ public class Fade : MonoBehaviour
     {
         if(FadeIn)
         {
+            FadeOut = false;
             if(CanvasGroup.alpha < 1)
             {
                 CanvasGroup.alpha += TimeToFade * Time.deltaTime;
@@ -35,6 +36,7 @@ public class Fade : MonoBehaviour
 
         if(FadeOut)
         {
+            FadeIn = false;
             if(CanvasGroup.alpha >= 0)
             {
                 CanvasGroup.alpha -= TimeToFade * Time.deltaTime;
@@ -77,6 +79,8 @@ public class Fade : MonoBehaviour
         {
             if (this.CanvasGroup.alpha < 1f)
             {
+                FadeOut = false;
+
                 this.CanvasGroup.alpha += this.TimeToFade * Time.deltaTime;
                 if (this.CanvasGroup.alpha == 1f)
                 {
