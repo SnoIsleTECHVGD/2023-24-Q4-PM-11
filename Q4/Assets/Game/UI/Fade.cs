@@ -109,7 +109,7 @@ public class Fade : MonoBehaviour
           
 
             time += Time.deltaTime;
-            if(time > 17.1f)
+            if(time > 17.3f)
             {
                 SceneManager.LoadScene(1);
             }
