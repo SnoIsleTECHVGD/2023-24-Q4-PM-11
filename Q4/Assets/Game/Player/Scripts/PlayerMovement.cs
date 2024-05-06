@@ -32,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject pause;
     public CameraMovement cam;
 
+    public bool isOnBoss;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -85,8 +87,16 @@ public class PlayerMovement : MonoBehaviour
 
         var rayDown = new Ray(transform.position, Vector3.down * 2);
         RaycastHit hitDownInfo;
-        Physics.Raycast(rayDown, out hitDownInfo, 3);
+        if(Physics.Raycast(rayDown, out hitDownInfo, 3))
+        {
+            if (hitDownInfo.transform.tag == "BossPlatform" && !isOnBoss)
+            {
+                StartCoroutine(GetComponent<MusicController>().TransitionElevatorToBossFight());
+                isOnBoss = true;
+            }
+        }
 
+       
         if (hitDownInfo.normal.y < 1)
         {
             vertInput = hitDownInfo.normal.normalized.y;

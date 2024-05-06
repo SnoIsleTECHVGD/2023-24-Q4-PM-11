@@ -9,6 +9,8 @@ public class RaytraceSetting : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(UnityEngine.Rendering.HighDefinition.HDDynamicResolutionPlatformCapabilities.DLSSDetected);
+
         string graphicsCardname = SystemInfo.graphicsDeviceName;
 
         if(graphicsCardname.Contains("RTX"))

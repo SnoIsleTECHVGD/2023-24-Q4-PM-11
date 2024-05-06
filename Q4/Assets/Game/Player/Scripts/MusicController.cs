@@ -8,6 +8,7 @@ public class MusicController : MonoBehaviour
     public AudioClip main;
     public AudioClip elevator;
     public AudioClip boss;
+    public AudioClip bossFight;
 
 
     public IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
@@ -58,6 +59,15 @@ public class MusicController : MonoBehaviour
         StartCoroutine(StartFade(source, .2f, 0));
         yield return new WaitForSeconds(.2f);
         source.clip = boss;
+        StartCoroutine(StartFade(source, .2f, .1f));
+        source.Play();
+    }
+
+    public IEnumerator TransitionElevatorToBossFight()
+    {
+        StartCoroutine(StartFade(source, .2f, 0));
+        yield return new WaitForSeconds(.2f);
+        source.clip = bossFight;
         StartCoroutine(StartFade(source, .2f, .1f));
         source.Play();
     }
