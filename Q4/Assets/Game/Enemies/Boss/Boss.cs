@@ -162,6 +162,8 @@ public class Boss : MonoBehaviour
         if(health <= 0)
         {
             anim.CrossFadeInFixedTime("Death", .05f);
+
+
         }
 
         source.PlayOneShot(impacts[Random.Range(0, impacts.Length)], .1f);
