@@ -39,6 +39,11 @@ public class Boss : MonoBehaviour
 
     public AudioClip[] impacts;
 
+    public GameObject fade;
+
+    public GameObject rockImpact;
+
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -49,7 +54,10 @@ public class Boss : MonoBehaviour
     {
         if (player.isOnBoss)
         {
-            bossUi.SetActive(true);
+            if(health > 0)
+            {
+                bossUi.SetActive(true);
+            }
             bossUi.transform.GetChild(1).GetComponent<Slider>().value = health;
 
 
@@ -103,9 +111,12 @@ public class Boss : MonoBehaviour
 
         shake.Shake(.5f);
 
+       
 
         if (arm == 1)
         {
+            Destroy(Instantiate(rockImpact, rightSpawn.transform.position, Quaternion.identity), 3);
+
             if (Vector3.Distance(rightSpawn.transform.position, player.transform.position) < 10)
             {
                 player.GetComponent<HealthController>().TakeDamage(30);
@@ -113,15 +124,23 @@ public class Boss : MonoBehaviour
         }
         else if (arm == 0)
         {
+            Destroy(Instantiate(rockImpact, leftSpawn.transform.position, Quaternion.identity), 3);
+
             if (Vector3.Distance(leftSpawn.transform.position, player.transform.position) < 10)
             {
+
+
                 player.GetComponent<HealthController>().TakeDamage(30);
             }
         }
         else
         {
+            Destroy(Instantiate(rockImpact, rightSpawn.transform.position, Quaternion.identity), 3);
+            Destroy(Instantiate(rockImpact, leftSpawn.transform.position, Quaternion.identity), 3);
+
             if (Vector3.Distance(rightSpawn.transform.position, player.transform.position) < 10)
             {
+
                 player.GetComponent<HealthController>().TakeDamage(30);
             }
             if (Vector3.Distance(leftSpawn.transform.position, player.transform.position) < 10)
@@ -161,11 +180,37 @@ public class Boss : MonoBehaviour
 
         if(health <= 0)
         {
-            anim.CrossFadeInFixedTime("Death", .05f);
-
+            anim.CrossFadeInFixedTime("Death", .2f);
+            StartCoroutine(finalCutscene());
 
         }
 
         source.PlayOneShot(impacts[Random.Range(0, impacts.Length)], .1f);
+    }
+
+    IEnumerator finalCutscene()
+    {
+        bossUi.gameObject.SetActive(false);
+        hasLeftArm = false;
+        hasRightArm = false;
+        yield return new WaitForSeconds(2f);
+
+        fade.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        Camera.main.transform.GetComponent<CamShake>().enabled = false;
+        Camera.main.transform.parent = null;
+        Camera.main.transform.position = new Vector3(27.38612f, 1.928812f, 24.5f);
+        Camera.main.transform.eulerAngles = new Vector3(87.715f, 38.289f, -49.825f);
+        fade.transform.GetChild(0).gameObject.SetActive(true);
+        fade.transform.GetChild(1).gameObject.SetActive(true);
+
+
+        FindObjectOfType<CameraMovement>().enabled = false;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        fade.transform.GetChild(2).GetComponent<Fade>().FadeOut = true;
+
     }
 }

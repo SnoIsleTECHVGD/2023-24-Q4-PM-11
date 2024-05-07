@@ -5,9 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
+    public bool isBoss;
     public void Retry()
     {
-        SceneManager.LoadScene(1);
+        if(isBoss)
+        {
+            SceneManager.LoadScene(2);
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void MainMenu()
