@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 
 public class RaytraceSetting : MonoBehaviour
@@ -9,13 +10,18 @@ public class RaytraceSetting : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(UnityEngine.Rendering.HighDefinition.HDDynamicResolutionPlatformCapabilities.DLSSDetected);
 
         string graphicsCardname = SystemInfo.graphicsDeviceName;
 
         if(graphicsCardname.Contains("RTX"))
         {
             Camera.main.GetComponent<HDAdditionalCameraData>().allowDynamicResolution = true;
+
+            if (!UnityEngine.Rendering.HighDefinition.HDDynamicResolutionPlatformCapabilities.DLSSDetected)
+            {
+                Camera.main.GetComponent<HDAdditionalCameraData>().allowDeepLearningSuperSampling = false;
+
+            }
         }
         else
         {

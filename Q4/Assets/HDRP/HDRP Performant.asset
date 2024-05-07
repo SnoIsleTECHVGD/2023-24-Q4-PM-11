@@ -126,14 +126,14 @@ MonoBehaviour:
       DLSSPerfQualitySetting: 2
       DLSSUseOptimalSettings: 1
       DLSSSharpness: 0
-      maxPercentage: 100
-      minPercentage: 100
-      dynResType: 1
-      upsampleFilter: 1
-      forceResolution: 0
-      forcedPercentage: 100
+      maxPercentage: 70
+      minPercentage: 66
+      dynResType: 0
+      upsampleFilter: 4
+      forceResolution: 1
+      forcedPercentage: 50
       lowResTransparencyMinimumThreshold: 0
-      rayTracingHalfResThreshold: 50
+      rayTracingHalfResThreshold: 70
     lowresTransparentSettings:
       enabled: 1
       checkerboardDepthBuffer: 1
