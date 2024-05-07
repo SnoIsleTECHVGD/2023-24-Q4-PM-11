@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -13,27 +14,56 @@ public class Boss : MonoBehaviour
     public bool hasRightArm;
     public bool hasLeftArm;
 
+    public CamShake shake;
+
+    private AudioSource source;
+    public AudioClip hit;
+
+    public Collider left;
+    public Collider right;
+
+    public float leftHealth = 300;
+    public float rightHealth = 300;
+
+    public int health = 800;
+
+    public GameObject hand;
+
+    public Transform leftHand;
+    public Transform rightHand;
+
+
+
+    public Transform leftSpawn;
+    public Transform rightSpawn;
+
+    public AudioClip[] impacts;
+
     void Start()
     {
         anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if(player.isOnBoss)
+        if (player.isOnBoss)
         {
             bossUi.SetActive(true);
+            bossUi.transform.GetChild(1).GetComponent<Slider>().value = health;
 
+
+           
 
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
             {
                 timer += Time.deltaTime;
 
-                if(timer > 1.5f)
+                if (timer > 1.5f)
                 {
-                    if(hasRightArm && hasLeftArm)
+                    if (hasRightArm && hasLeftArm)
                     {
-                        if(Random.value > .5f)
+                        if (Random.value > .5f)
                         {
                             timer = 0;
                             anim.CrossFade("SwingDownBoth", .05f);
@@ -41,7 +71,7 @@ public class Boss : MonoBehaviour
                         }
                     }
 
-                    if(hasLeftArm)
+                    if (hasLeftArm)
                     {
                         if (Random.value > .5f)
                         {
@@ -64,5 +94,76 @@ public class Boss : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Shake(int arm)
+    {
+        source.PlayOneShot(hit, .2f);
+        shake.trauma = .2f;
+
+        shake.Shake(.5f);
+
+
+        if (arm == 1)
+        {
+            if (Vector3.Distance(rightSpawn.transform.position, player.transform.position) < 10)
+            {
+                player.GetComponent<HealthController>().TakeDamage(30);
+            }
+        }
+        else if (arm == 0)
+        {
+            if (Vector3.Distance(leftSpawn.transform.position, player.transform.position) < 10)
+            {
+                player.GetComponent<HealthController>().TakeDamage(30);
+            }
+        }
+        else
+        {
+            if (Vector3.Distance(rightSpawn.transform.position, player.transform.position) < 10)
+            {
+                player.GetComponent<HealthController>().TakeDamage(30);
+            }
+            if (Vector3.Distance(leftSpawn.transform.position, player.transform.position) < 10)
+            {
+                player.GetComponent<HealthController>().TakeDamage(30);
+            }
+        }
+    }
+
+    public void enableLeftHandCollider(int enable)
+    {
+        left.enabled = enable == 1;
+    }
+
+    public void enableRightHandCollider(int enable) 
+    {
+        right.enabled = enable == 1;
+
+    }
+
+    public void playHitSound(Vector3 hit)
+    {
+        if (leftHealth <= 0 && hasLeftArm)
+        {
+            hasLeftArm = false;
+            Instantiate(hand, rightSpawn.transform.position, Quaternion.identity);
+            Destroy(leftHand.gameObject);
+        }
+
+        if (rightHealth <= 0 && hasRightArm)
+        {
+            hasRightArm = false;
+            Instantiate(hand, leftSpawn.transform.position, Quaternion.identity);
+            Destroy(rightHand.gameObject);
+        }
+
+
+        if(health <= 0)
+        {
+            anim.CrossFadeInFixedTime("Death", .05f);
+        }
+
+        source.PlayOneShot(impacts[Random.Range(0, impacts.Length)], .1f);
     }
 }
